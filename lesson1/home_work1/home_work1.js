@@ -2,41 +2,47 @@
 //     Вивести кожну змінну за допомогою: console.log , alert, document.write
 // - Переприсвоїти кожній змінній з завдання значення на довільне.
 //     Вивести кожну змінну за допомогою: console.log , alert, document.write
-let a = 'hello';
-let b = 10;
-let c = true;
+let aa = 'hello';
+let bb = 10;
+let cc = true;
 let d = false;
-console.log(a)
-console.log(b)
-console.log(c)
+console.log(aa)
+console.log(bb)
+console.log(cc)
 console.log(d)
-// alert(a)
-// alert(b)
-// alert(c)
+// alert(aa)
+// alert(bb)
+// alert(cc)
 // alert(d)
-document.write(a)
-document.write(b)
-document.write(c)
+document.write(aa)
+document.write(bb)
+document.write(cc)
 document.write(d+"<br/>")
 
 
 // - Створити 3 змінних firstName, middleName, lastName, наповнити їх своїм ПІБ. З'єднати їх в одну змінну person. (Не об'єкт)
 // - За допомогою 3х різних prompt() отримати 3 слова які являються вашими Імям, По-Батькові та роками.
 //  Вивести "Вітаю *Імя* *По батькові*. Тобі *вік* років".
-let firstName = 'Ihor';
-let midleName = 'Gavruliyk';
-let lastName = 'Yaroslavivson';
-let person = firstName+midleName+lastName;
-// prompt(firstName);
-// prompt(lastName);
-// prompt(24);
-console.log('Вітаю '+firstName+ ' '+ lastName+'.Тобі 24 роки')
+// let firstName = 'Ihor';
 
+// let lastName = 'Yaroslavivson';
+let midleName = 'Gavruliyk';
+let firstName = prompt();
+let lastName = prompt();
+let age = prompt();
+console.log('Вітаю '+firstName+ ' '+ lastName+'.Тобі '+age+' роки')
+let person = firstName+midleName+lastName;
 
 // - За допомогою оператора typeof визначити типи наступних змінних та вивести їх в консоль.
 //     let a = 100; let b = '100'; let c = true;
 // - Визначити відповідний оператор в виразах що б вийшов відповідний результат.
 //     В однакових виразах не використовувати однакові оператори!!!
+let a = 100;
+let b = '100';
+let c = true;
+console.log(typeof a)
+console.log(typeof b)
+console.log(typeof c)
 
 // 5 ? 6 -> true
 // 5 ? 6 -> false

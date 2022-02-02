@@ -102,7 +102,9 @@ console.log(s+'  cm2')
 
 let heightC = 10;
 let dC  = 4;
-const V = (Math.PI*dC*dC*heightC)/2;
+// V=PI*r*r*heightC
+let r = dC/2
+const V = Math.PI*r*r*heightC;
 
 console.log('Завдання 6')
 console.log(V+'  cm3')
