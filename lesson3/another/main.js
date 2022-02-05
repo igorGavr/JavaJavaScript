@@ -38,7 +38,10 @@ let products = [
 document.write('<ul>')
 for (let i = 0; i < products.length; i++) {
     const product = products[i];
-    document.write(`<li class="target">${product.title} ${product.price} <img src="${product.image}"></li>`)
+    document.write(`<li class="target">
+                        ${product.title} 
+                        ${product.price}
+                        <img src="${product.image}"></li>`)
 
 }
 document.write('</ul>')
