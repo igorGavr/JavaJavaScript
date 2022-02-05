@@ -85,8 +85,6 @@ a+b<4 ? console.log(resalt+' - мало') : console.log(resalt+' - багато'
 // число: позитивним, негативним або нулем
 // напишіть це тернарним оператором
 let num = 0
-num<0 ? console.log('негативне число') : console.log('0 або позитивне число')
-if (num===0){
-    console.log('це 0')
-}
+num<0 ? console.log('негативне число') :
+    num>0 ? console.log('positive number') : console.log('0')
 // напишіть це тернарним оператором ------ не знаю як це зробити
