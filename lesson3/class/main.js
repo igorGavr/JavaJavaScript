@@ -153,7 +153,14 @@ console.log('Task 7')
 // }
 // console.log(array)
 
-
+let i = 0;
+while (i !== array.length){
+    if(!(array[i]%3)){
+        array[i] = 'okten'
+    }
+    i++
+}
+console.log(array)
 
 
 for (let j = 0; j < array.length; j++) {
