@@ -21,8 +21,10 @@ while (item_r>=0) {
 // 2. перебрати його циклом for
 console.log('Task 2')
 console.log(array)
-for (const arrayKey in array) {
-    console.log(array[arrayKey])
+
+for (let j = 0; j < array.length; j++) {
+    const arrayElement = array[j];
+    console.log(arrayElement)
 }
 
 // В зворотньому порядку
@@ -55,9 +57,11 @@ while (item3_r>=0 ) {
 // 4. перебрати циклом for та вивести  числа тільки з непарним індексом
 console.log('Task 4')
 console.log(array)
-for (const arrayKey4 in array) {
-    if (arrayKey4%2===1) {
-        console.log(array[arrayKey4])
+
+for (let j = 0; j < array.length; j++) {
+    const arrayElement = array[j];
+    if (j%2===1) {
+        console.log(arrayElement)
     }
 }
 
@@ -92,10 +96,13 @@ while (item5_r>=0 ) {
 // 6. перебрати циклом for та вивести  числа тільки парні  значення
 console.log('Task 6')
 console.log(array)
-for (const arrayKey6 in array) {
-    if (array[arrayKey6]%2===0) {
-        console.log(array[arrayKey6])
+
+for (let j = 0; j < array.length; j++) {
+    const arrayElement = array[j];
+    if (arrayElement%2===0) {
+        console.log(arrayElement)
     }
+
 }
 
 // В зворотньому порядку
@@ -108,40 +115,6 @@ for (let j = array.length - 1; j >= 0; j--) {
 }
 // 7. замінити кожне число кратне 3 на слово "okten"
 console.log('Task 7')
-
-
-// console.log(array)
-// console.log('forof')
-// for (let number of array) {
-//     if (array[number]%3===0){
-//         array[number] = 'okten'  //чомусь не може знайти всіх чисел
-//         console.log(array[number])
-//     }
-// }
-// console.log(array)
-
-
-// for (let j = 0; j < array.length; j++) {
-//     let arrayElement = array[j];
-//     if (arrayElement%3===0){
-//         arrayElement = 'okten'    //чомусь не може знайти всіх чисел
-//     }
-// }
-// console.log(array)
-
-
-
-
-//
-// console.log(array)
-// console.log('forin')
-// for (let arrayKey in array) {
-//     if (array[arrayKey]%3===0){
-//         array[arrayKey] = 'okten'      // тут прaцює
-//     }
-// }
-// console.log(array)
-//
 
 
 // console.log(array)
