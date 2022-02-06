@@ -2,12 +2,16 @@
 Використовуючи данні з масиву, за допомоги document.write та циклу
 побудувати структуру по шаблону template1.1
 */
+console.log('/*\n' +
+    'Використовуючи данні з масиву, за допомоги document.write та циклу\n' +
+    'побудувати структуру по шаблону template1.1\n' +
+    '*/')
 document.write(`<div class="main_wrap">`)
 
 
 let listOfItems = ['html', 'css', 'javascript', 'mysql',
                    'mongodb', 'react', 'angular', 'node.js'];
-
+console.log(listOfItems)
 document.write('<ul>')
 for (let i = 0; i<listOfItems.length; i++){
     document.write(`<li>item of array ${listOfItems[i]}</li>`)
@@ -23,6 +27,14 @@ document.write('</ul>')
  впровадити в шаблон.
 Шаблон застосувати до кожного об'єкта в масиві
 */
+console.log('/*\n' +
+    'Використовуючи данні з масиву, за допомоги document.write та циклу\n' +
+    'побудувати структуру по шаблону template2.1 & template2.2.\n' +
+    'Зробити адекватну стилізацію.\n' +
+    'Великими літерами прописанні властивості об\'єкту які потрібно\n' +
+    ' впровадити в шаблон.\n' +
+    'Шаблон застосувати до кожного об\'єкта в масиві\n' +
+    '*/')
 let simpsons = [
     {
         name: 'Bart',
@@ -60,12 +72,13 @@ let simpsons = [
         photo: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Maggie_Simpson.png'
     },
 ];
+console.log(simpsons)
 document.write(`<div class="main">`)
 for (let i = 0; i < simpsons.length; i++) {
     // let simpson = simpsons[i];
     document.write(`<div class="target">
                             <h2>
-                                ${i.name}                  <----------like this
+                                ${simpsons[i].name}                  <------  
                                 ${simpsons[i].surname} . Age is - 
                                 ${simpsons[i].age} 
                             </h2>
@@ -84,6 +97,12 @@ document.write(`</div>`)
     Великими літерами прописанні властивості об'єкту які потрібно впровадити
      в шаблон
         */
+console.log('/*\n' +
+    '    Використовуючи данні з масиву, за допомоги document.write та циклу\n' +
+    '    побудувати структуру по шаблону template3.1 Зробити адекватну стилізацію\n' +
+    '    Великими літерами прописанні властивості об\'єкту які потрібно впровадити\n' +
+    '     в шаблон\n' +
+    '        */')
 let products = [
     {
         title: 'milk',
@@ -106,6 +125,7 @@ let products = [
         image: 'https://yogiproducts.com/wp-content/uploads/2009/03/YT-US-CAR-RelaxedMind-C23-202201-V2-3DFront_withGlow-300DPI-1.png'
     },
 ];
+console.log(products)
 document.write(`<div>`)
 for (let product of products) {
     document.write(`<div class="product-card">
@@ -121,6 +141,9 @@ document.write(`</div>`)
 /*За допомогою циклу вивести всю інформацію про пости використовуючи шаблон Template 1.1.
 * ЗА допомоги стилів побудувати структуру "сітки" по 5 об'єктів в лінію
 * */
+console.log('/*За допомогою циклу вивести всю інформацію про пости використовуючи шаблон Template 1.1.\n' +
+    '* ЗА допомоги стилів побудувати структуру "сітки" по 5 об\'єктів в лінію\n' +
+    '* */')
 let coursesArray = [
     {
         title: 'JavaScript Complex',
@@ -190,6 +213,7 @@ let coursesArray = [
         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
     }
 ];
+console.log(coursesArray)
 document.write(`<div class="main2">`)
 for (const coursesArrayElement of coursesArray) {
     document.write(`<div class="wrap">
@@ -441,6 +465,7 @@ let usersList = [
         }
     }
 ];
+console.log(usersList)
 document.write(`<div class="wrap_user_list" >`)
 for (const usersListElement of usersList) {
     document.write(`<div class="users-box">
@@ -465,6 +490,13 @@ document.write(`</div>`)
 //     c. Заповнити масив 20ма рандомними числами. (Google: Generate random number JS)
 // d. Заповнити масив 20ма рандомними чисалами в діапазоні від 8 до 732
 // (Google: Generate random number JS)
+console.log('\n' +
+    '// 1. Створити пустий масив та :\n' +
+    '//     a. заповнити його 50 парними числами за допомоги циклу.\n' +
+    '//     b. заповнити його 50 непарними числами за допомоги циклу.\n' +
+    '//     c. Заповнити масив 20ма рандомними числами. (Google: Generate random number JS)\n' +
+    '// d. Заповнити масив 20ма рандомними чисалами в діапазоні від 8 до 732\n' +
+    '// (Google: Generate random number JS)')
 let newList = []
 for (let i = 0; i < 100; i++ ) {
     if (i%2===0) {
@@ -481,6 +513,7 @@ while (i!==20) {
 }
 console.log(newList)
 // 2. Вивести за допомогою console.log кожен третій елемен
+console.log('// 2. Вивести за допомогою console.log кожен третій елемен')
 console.log('кожен третій елемент')
 for (let j = 0; j < newList.length; j++) {
     const newListElement = newList[j];
@@ -491,7 +524,9 @@ for (let j = 0; j < newList.length; j++) {
 // 3. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним.
 // 4. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним
 // // та записати їх в новий масив
-
+console.log('// 3. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним.\n' +
+    '// 4. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним\n' +
+    '// // та записати їх в новий масив')
 console.log('кожен третій парний елемент')
 let newList2 = []
 for (let j = 0; j < newList.length; j++) {
@@ -505,6 +540,8 @@ console.log(`newList2 `+newList2)
 
 // 5. Вивести кожен елемент масиву, сусід справа якого є парним
 // EXAMPLE: [ 1, 2, 3, 5, 7, 9, 56, 8, 67 ] -> Має бути виведено 1, 9, 56
+console.log('// 5. Вивести кожен елемент масиву, сусід справа якого є парним\n' +
+    '// EXAMPLE: [ 1, 2, 3, 5, 7, 9, 56, 8, 67 ] -> Має бути виведено 1, 9, 56')
 console.log('кожен елемент масиву, сусід справа якого є парним')
 for (let j = 0; j < newList.length; j++) {
     const newListElement = newList[j];
@@ -514,7 +551,8 @@ for (let j = 0; j < newList.length; j++) {
 }
 // 6. Є масив з числами [100,250,50,168,120,345,188], Які характеризують вартість окремої покупки.
 // Обрахувати середній чек.
-//
+console.log('// 6. Є масив з числами [100,250,50,168,120,345,188], Які характеризують вартість окремої покупки.\n' +
+    '// Обрахувати середній чек.')
 let productPrice =  [100,250,50,168,120,345,188]
 let result = 0
 for (let j = 0; j < productPrice.length; j++) {
@@ -526,6 +564,8 @@ console.log('Result - '+result+ ', Avarage Price - '+ avarage)
 console.log(productPrice)
 // 7. Створити масив з рандомними значеннями, помножити всі його елементи на 5 та перемістити
 // їх в інший масив.
+console.log('// 7. Створити масив з рандомними значеннями, помножити всі його елементи на 5 та перемістити\n' +
+    '// їх в інший масив.')
 let newList3 = []
 
 let i2 = 0
@@ -545,7 +585,8 @@ console.log('масив з рандомними значеннями, помно
 console.log(newList3multiply)
 // 8. Створити масив з будь якими значеннями (стрінги, числа, і тд...). пройтись по ньому,
 // і якщо елемент є числом - додати його в інший масив.
-//
+console.log('// 8. Створити масив з будь якими значеннями (стрінги, числа, і тд...). пройтись по ньому,\n' +
+    '// і якщо елемент є числом - додати його в інший масив.')
 let masiv = ['sdf', 2, 23, 'dff', 'dsfsg', 1, 3, 54]
 console.log(masiv)
 let masivOfNumber = []
@@ -566,54 +607,93 @@ console.log('Masiv for Numbers')
 console.log(masivOfNumber)
 
 
-
-
-
-
-//
+console.log('User with Cities\n// - Дано 2 масиви з рівною кількістю об\'єктів.\n' +
+    '// Масиви: ')
 // - Дано 2 масиви з рівною кількістю об'єктів.
 // Масиви:
-    let usersWithId = [
-        {id: 1, name: 'vasya', age: 31, status: false},
-        {id: 2, name: 'petya', age: 30, status: true},
-        {id: 3, name: 'kolya', age: 29, status: true},
-        {id: 4, name: 'olya', age: 28, status: false}
-    ];
-
+let usersWithId = [
+    {id: 1, name: 'vasya', age: 31, status: false},
+    {id: 2, name: 'petya', age: 30, status: true},
+    {id: 3, name: 'kolya', age: 29, status: true},
+    {id: 4, name: 'olya', age: 28, status: false}
+];
+console.log(usersWithId)
 let citiesWithId = [
     {user_id: 3, country: 'USA', city: 'Portland'},
     {user_id: 1, country: 'Ukraine', city: 'Ternopil'},
     {user_id: 2, country: 'Poland', city: 'Krakow'},
     {user_id: 4, country: 'USA', city: 'Miami'}
 ];
-//
+console.log(citiesWithId)
 // З'єднати в один об'єкт користувача та місто з відповідними "id" та "user_id" .
 //     Записати цей об'єкт в новий масив
+console.log('// З\'єднати в один об\'єкт користувача та місто з відповідними "id" та "user_id" .\n' +
+    '//     Записати цей об\'єкт в новий масив')
 // Example:
-    let usersWithCities = [
-            {
-                id: 1, // <===
-                name: 'vasya',
-                age: 31,
-                status: false,
-                address: {
-                    user_id: 1, // <===
-                    country: 'Ukraine',
-                    city: 'Ternopil'
-                }
-            },
-            // TO BE CONTINUED .....
-        ]
+// let usersWithCities = [
+//     {
+//         id: 1, // <===
+//         name: 'vasya',
+//         age: 31,
+//         status: false,
+//         address: {
+//             user_id: 1, // <===
+//             country: 'Ukraine',
+//             city: 'Ternopil'
+//         },         // TO BE CONTINUED .....
+//     }
+// ]
+
+let users_with_cities = []
+// debugger
+for (const usersWithIdKey in usersWithId) {
+    for (const citiesWithIdKey in citiesWithId) {
+        if(usersWithIdKey.id===citiesWithIdKey.user_id) {
+
+            users_with_cities[0]===citiesWithIdKey
+
+            // users_with_cities.push(usersWithIdKey)
+        }
+    }
+}
+console.log(users_with_cities)
+
+
+
+
+
+
+
+
+
+
 
 
 
 //
-//         - Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи,
-//         значення яких є парними.
+// - Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи,
+//   значення яких є парними.
 //
-// - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив.
-// За допомогою будь-якого циклу скопіювати значення одного масиву в інший.
+console.log('/ - Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи,\n' +
+    '//   значення яких є парними.')
+let newList4 = []
+let i3 = 0
+while (i3!==10) {
+    newList4.push(Array.from({length: 1}, () => Math.floor(Math.random()*700)));
+    i3++
+}
+console.log(newList4)
+for (let j = 0; j < newList4.length; j++) {
+    // const j = newList4[j];    <------ чому , при такому записі , при такій константі (j) не працює код?
+    if (newList4[j]%2===0) {
+        console.log(newList4[j])
+    }
+}
+
 //
+console.log('// - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив.\n' +
+    '// За допомогою будь-якого циклу скопіювати значення одного масиву в інший.')
+console.log(newList4)
 //
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу for зібрати всі букви в слово.
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу while зібрати всі букви в слово.
