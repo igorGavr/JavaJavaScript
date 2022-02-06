@@ -65,7 +65,7 @@ for (let i = 0; i < simpsons.length; i++) {
     // let simpson = simpsons[i];
     document.write(`<div class="target">
                             <h2>
-                                ${simpsons[i].name}
+                                ${i.name}                  <----------like this
                                 ${simpsons[i].surname} . Age is - 
                                 ${simpsons[i].age} 
                             </h2>
@@ -481,22 +481,94 @@ while (i!==20) {
 }
 console.log(newList)
 // 2. Вивести за допомогою console.log кожен третій елемен
-for (const newListElement of newList) {
-    
+console.log('кожен третій елемент')
+for (let j = 0; j < newList.length; j++) {
+    const newListElement = newList[j];
+    if (j%3===0) {
+        console.log(newListElement)
+    }
 }
 // 3. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним.
 // 4. Вивести за допомогою console.log кожен третій елемен тільки якщо цей елемент є парним
-// та записати їх в новий масив
+// // та записати їх в новий масив
+
+console.log('кожен третій парний елемент')
+let newList2 = []
+for (let j = 0; j < newList.length; j++) {
+    const newListElement = newList[j];
+    if (j%3===0 && newListElement%2===0) {
+        console.log(newListElement)
+        newList2.push(newListElement)
+    }
+}
+console.log(`newList2 `+newList2)
+
 // 5. Вивести кожен елемент масиву, сусід справа якого є парним
 // EXAMPLE: [ 1, 2, 3, 5, 7, 9, 56, 8, 67 ] -> Має бути виведено 1, 9, 56
+console.log('кожен елемент масиву, сусід справа якого є парним')
+for (let j = 0; j < newList.length; j++) {
+    const newListElement = newList[j];
+    if (newList[j+1]%2===0) {
+        console.log(newListElement)
+    }
+}
 // 6. Є масив з числами [100,250,50,168,120,345,188], Які характеризують вартість окремої покупки.
 // Обрахувати середній чек.
 //
+let productPrice =  [100,250,50,168,120,345,188]
+let result = 0
+for (let j = 0; j < productPrice.length; j++) {
+    const productPriceElement = productPrice[j];
+    result+=productPriceElement
+}
+let avarage = result/productPrice.length
+console.log('Result - '+result+ ', Avarage Price - '+ avarage)
+console.log(productPrice)
 // 7. Створити масив з рандомними значеннями, помножити всі його елементи на 5 та перемістити
 // їх в інший масив.
+let newList3 = []
+
+let i2 = 0
+while (i2!==20) {
+    newList3.push(Array.from({length: 1}, () => Math.floor(Math.random()*700)));
+    i2++
+}
+console.log('масив з рандомними значеннями')
+console.log(newList3)
+
+let newList3multiply = []
+for (let j = 0; j < newList3.length; j++) {
+    const newList3Element = newList3[j];
+    newList3multiply.push(newList3Element*5)
+}
+console.log('масив з рандомними значеннями, помножити всі його елементи на 5 ')
+console.log(newList3multiply)
 // 8. Створити масив з будь якими значеннями (стрінги, числа, і тд...). пройтись по ньому,
 // і якщо елемент є числом - додати його в інший масив.
 //
+let masiv = ['sdf', 2, 23, 'dff', 'dsfsg', 1, 3, 54]
+console.log(masiv)
+let masivOfNumber = []
+// for (const masivKey in masiv) {
+//     if (typeof masivKey === 'number') {
+//         // masivOfNumber.push(masivKey)      // тут чомусь знову не працює , не знаходить числа
+//         console.log(masivKey)             // напевно треба робити не через forin
+//     }
+// }
+
+for (const masivElement of masiv) {
+    if (typeof masivElement === 'number') {
+        console.log(masivElement)
+        masivOfNumber.push(masivElement)
+    }
+}
+console.log('Masiv for Numbers')
+console.log(masivOfNumber)
+
+
+
+
+
 
 //
 // - Дано 2 масиви з рівною кількістю об'єктів.
