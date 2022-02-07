@@ -607,10 +607,13 @@ console.log('Masiv for Numbers')
 console.log(masivOfNumber)
 
 
+
+
+
 console.log('User with Cities\n// - Дано 2 масиви з рівною кількістю об\'єктів.\n' +
     '// Масиви: ')
-// - Дано 2 масиви з рівною кількістю об'єктів.
-// Масиви:
+// - Дано 2 масиви з рівною кількістю об'єктів.Масиви:
+console.log('usersWithId')
 let usersWithId = [
     {id: 1, name: 'vasya', age: 31, status: false},
     {id: 2, name: 'petya', age: 30, status: true},
@@ -618,6 +621,7 @@ let usersWithId = [
     {id: 4, name: 'olya', age: 28, status: false}
 ];
 console.log(usersWithId)
+console.log('citiesWithId')
 let citiesWithId = [
     {user_id: 3, country: 'USA', city: 'Portland'},
     {user_id: 1, country: 'Ukraine', city: 'Ternopil'},
@@ -641,21 +645,29 @@ console.log('// З\'єднати в один об\'єкт користувача
 //             country: 'Ukraine',
 //             city: 'Ternopil'
 //         },         // TO BE CONTINUED .....
-//     }
-// ]
-
+// }]
 let users_with_cities = []
 // debugger
-for (const usersWithIdKey in usersWithId) {
-    for (const citiesWithIdKey in citiesWithId) {
-        if(usersWithIdKey.id===citiesWithIdKey.user_id) {
+for (let j = 0; j < usersWithId.length; j++) {
+    const usersWithIdElement = usersWithId[j];
+    for (let k = 0; k < citiesWithId.length; k++) {
+        const citiesWithIdElement = citiesWithId[k];
+        if (usersWithIdElement.id===citiesWithIdElement.user_id) {
+            users_with_cities.push(usersWithIdElement)
 
-            users_with_cities[0]===citiesWithIdKey
-
-            // users_with_cities.push(usersWithIdKey)
         }
     }
 }
+
+// for (const usersWithIdElement of usersWithId) {
+//     for (const citiesWithIdElement of citiesWithId) {
+//         if (usersWithIdElement.id===citiesWithIdElement.user_id) {
+//             users_with_cities+=usersWithIdElement
+//         }
+//     }
+// }
+
+console.log('Новий масив')
 console.log(users_with_cities)
 
 
@@ -668,6 +680,18 @@ console.log(users_with_cities)
 
 
 
+//Взяти масив з 10 чисел або створити його. Створити 2й порожній масив. За допомогою
+// будь-якого циклу скопіювати значення одного масиву в інший.
+console.log('// - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив.\n' +
+    '// За допомогою будь-якого циклу скопіювати значення одного масиву в інший.')
+console.log(listOfItems)
+let newList5 = []
+for (let j = 0; j < listOfItems.length; j++) {
+    const listOfItemsElement = listOfItems[j];
+    newList5.push(listOfItemsElement)
+}
+console.log(newList5)
+
 
 
 //
@@ -675,7 +699,7 @@ console.log(users_with_cities)
 //   значення яких є парними.
 //
 console.log('/ - Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи,\n' +
-    '//   значення яких є парними.')
+'//   значення яких є парними.')
 let newList4 = []
 let i3 = 0
 while (i3!==10) {
@@ -690,11 +714,33 @@ for (let j = 0; j < newList4.length; j++) {
     }
 }
 
-//
-console.log('// - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив.\n' +
-    '// За допомогою будь-якого циклу скопіювати значення одного масиву в інший.')
-console.log(newList4)
-//
+
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу for зібрати всі букви в слово.
+console.log(' Дано масив: [ \'a\', \'b\', \'c\'] . За допомогою циклу for зібрати всі букви в слово.')
+let newList6 =  [ 'a', 'b', 'c']
+let newList7 = ''
+for (const newList6Key in newList6) {
+    newList7 +=newList6[newList6Key]
+}
+console.log(newList6)
+console.log(newList7)
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу while зібрати всі букви в слово.
+console.log(' Дано масив: [ \'a\', \'b\', \'c\'] . За допомогою циклу while зібрати всі букви в слово.')
+let newList8 =  [ 'a', 'b', 'c']
+let newList9 = ''
+let i8 = 0
+while (i8!==newList8.length) {
+    newList9 +=newList8[i8]
+    // newList9.push(string)          // чому так не працює???
+    i8++
+}
+console.log(newList9+  '   while')
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу for of зібрати всі букви в слово.
+console.log('Дано масив: [ \'a\', \'b\', \'c\'] . За допомогою циклу for of зібрати всі букви в слово.')
+let newList10 =  [ 'a', 'b', 'c']
+let newList11 = ''
+for (const str of newList10) {
+    newList11 += str
+    // newList11.push(str)            // чому так не працює???
+}
+console.log(newList11+'    forof')
