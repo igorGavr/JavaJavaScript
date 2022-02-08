@@ -15,8 +15,6 @@ for (let i = 0; i<menu.length; i++){
 }
 document.write('</ul>')
 
-
-
 let products = [
     {
         title: 'item',
@@ -82,3 +80,35 @@ let user = {name:'bob', age: 12, status:true}
 for (const userKey in user) {
     console.log(userKey, user[userKey])
 }
+
+
+
+
+
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
+
+for (const user_item of users) {
+    document.write(`<ul>`)
+    for (const userItemKey in user_item) {
+        if (userItemKey !=='status') {
+            document.write(`<li>${userItemKey} - ${user_item[userItemKey]}</li>`)
+        }
+    }
+    document.write(`</ul>`)
+}
+
+
+
+

@@ -648,27 +648,19 @@ console.log('// З\'єднати в один об\'єкт користувача
 // }]
 let users_with_cities = []
 // debugger
-for (let j = 0; j < usersWithId.length; j++) {
-    const usersWithIdElement = usersWithId[j];
-    for (let k = 0; k < citiesWithId.length; k++) {
-        const citiesWithIdElement = citiesWithId[k];
-        if (usersWithIdElement.id===citiesWithIdElement.user_id) {
-            users_with_cities.push(usersWithIdElement)
-
+for (const user of usersWithId) {
+    for (const cities of citiesWithId) {
+        if (user.id === cities.user_id) {
+            user.address = cities
         }
     }
 }
-
-// for (const usersWithIdElement of usersWithId) {
-//     for (const citiesWithIdElement of citiesWithId) {
-//         if (usersWithIdElement.id===citiesWithIdElement.user_id) {
-//             users_with_cities+=usersWithIdElement
-//         }
-//     }
-// }
-
+users_with_cities.push(usersWithId)
 console.log('Новий масив')
 console.log(users_with_cities)
+console.log('cтарий масив')
+console.log(usersWithId)
+
 
 
 
