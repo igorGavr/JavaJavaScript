@@ -27,15 +27,18 @@ console.log(calculatorResult1);
 function square(sideA, sideB) {
     return sideA*sideB
 }
+square(23, 43)
 // - створити функцію яка обчислює та повертає площу кола з радіусом r
 function squareOfcircle(radius) {
     return Math.PI*radius*radius
 }
+squareOfcircle(23)
 // - створити функцію яка обчислює та повертає площу циліндру висотою h,
 // та радіутом r
 function squareOfcilinder(radius, height) {
     return 2*Math.PI*radius*radius + 2*Math.PI*radius*height
 }
+squareOfcilinder(12, 32)
 // - створити функцію яка приймає масив та виводить кожен його елемент
 let Array1 = [1, 2, 3, 4]
 function iteratorOfArray(arr) {
@@ -63,7 +66,7 @@ liCreator('li')
 function liCreatorPlusCount(a, quantity) {
     document.write('<ul>')
     for (let i = 0; i < quantity; i++) {
-        const aElement = a[i];
+        const element = a[i];
         document.write(`<li>${a}</li>`)
     }
     document.write('</ul>');
@@ -75,8 +78,8 @@ let Array2 = [1, 2, true, false, 'we ','fdg']
 function creatorListFromArray(arr) {
     document.write('<ul>')
     for (let i = 0; i < Array2.length; i++) {
-        const aElement = Array2[i];
-        document.write(`<li>${aElement}</li>`)
+        const alement = Array2[i];
+        document.write(`<li>${alement}</li>`)
     }
     document.write('</ul>');
 }

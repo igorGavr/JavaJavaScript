@@ -38,23 +38,23 @@ maxFunk(12, 344, 54)
 // - створити функцію яка повертає найбільше число з масиву
 console.log('створити функцію яка повертає найбільше число з масиву')
 
-function MaxNumberOfMasiv(array) {
+function maxNumberOfMasiv(array) {
     let max = array[0];
     for (const element of array) {
-        if(element > max){
+        if(element > max){                     //max = (el > max) ? el : max
             max = element;
         }
     }
     console.log(max+' max element')
     return max;
 }
-MaxNumberOfMasiv(createMasiv(10, 0))
+maxNumberOfMasiv(createMasiv(10, 0))
 
 
 // - створити функцію яка повертає найменьше число з масиву
 console.log('створити функцію яка повертає найменьше число з масиву')
 
-function MinNumberOfMasiv(array) {
+function minNumberOfMasiv(array) {
     let min = array[0];
     for (const element of array) {
         if(element < min){
@@ -64,7 +64,7 @@ function MinNumberOfMasiv(array) {
     console.log(min +' min element')
     return min;
 }
-MinNumberOfMasiv(createMasiv(10, 0))
+minNumberOfMasiv(createMasiv(10, 0))
 
 // - створити функцію яка приймає масив чисел, сумує значення елементів
 // масиву та повертає його. Приклад [1,2,10]->13
@@ -109,18 +109,18 @@ console.log('створити функцію яка приймає будь-як
     '// а виводить найбільше (Math використовувати заборонено);')
 
 // function minAndMaxElement(arg) {
-//     let min = arguments[0];
-//     let max = arguments[0];
+//     let min = arguments[0]
+//     let max = arguments[0]
 //     for (const element of arguments) {
 //         if (element > max) {
-//             max = element;
+//             max = element
 //         }                                 //  Тут все для мене зрозуміло
 //         if (element < min) {
-//             min = element;
+//             min = element
 //         }
 //     }
-//     console.log( max +" -- max ");
-//     return min;
+//     console.log( max +" -- max ")
+//     return min
 // }
 // minAndMaxElement(1, 2, 3)
 
@@ -130,8 +130,8 @@ Masiv2.push(createMasiv(12, 2))
 console.log(Masiv2+' masiv2')
 
 function returnMinOutputMax() {           // Функція чомусь адекватно не працює -
-    MaxNumberOfMasiv(Masiv2)             //  замість мах повертає цілий масив
-    return MinNumberOfMasiv(Masiv2)
+    maxNumberOfMasiv(Masiv2)             //  замість мах повертає цілий масив
+    return minNumberOfMasiv(Masiv2)
 }
 returnMinOutputMax()
 
@@ -157,7 +157,7 @@ console.log(' Функція приймає масив та робить з нь
 function reverseMasiv(reverse_arr) {           // тут теж не працює(
     let reverse_arr2 = []
     for (let i = reverse_arr.length - 1, j = 0; i >= 0; i--, j++) {
-        reverse_arr2[j] = reverse_arr2[i]
+        reverse_arr2[j] = reverse_arr[i]
     }
     console.log(reverse_arr2+' ---- reversed masiv')
     return reverse_arr2
