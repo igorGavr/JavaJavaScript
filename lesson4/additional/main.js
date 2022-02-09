@@ -64,7 +64,7 @@ masivOfFilds(arr)
 // EXAMPLE:
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
 console.log(' Створити функцію яка приймає масив будь яких объектів, та повертає\n' +
-    '//     масив значень всіх обєктів')
+    '//     масив значень всіх   обєктів')
 
 // let arr = [{name: 'Dima', age: 13}, {model: 'Camry'}, {name2: 'Dima', ag2: 13}, {model2: 'Camry'}]
 function masivOfKeys(arr) {
