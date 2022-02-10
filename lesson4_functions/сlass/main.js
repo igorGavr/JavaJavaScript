@@ -108,32 +108,32 @@ avarageElementOfMasiv(createMasiv(12, 3))
 console.log('створити функцію яка приймає будь-яку кількість чисел, повертає найменьше,\n' +
     '// а виводить найбільше (Math використовувати заборонено);')
 
-// function minAndMaxElement(arg) {
-//     let min = arguments[0]
-//     let max = arguments[0]
-//     for (const element of arguments) {
-//         if (element > max) {
-//             max = element
-//         }                                 //  Тут все для мене зрозуміло
-//         if (element < min) {
-//             min = element
-//         }
-//     }
-//     console.log( max +" -- max ")
-//     return min
-// }
-// minAndMaxElement(1, 2, 3)
-
-
-let Masiv2 = []
-Masiv2.push(createMasiv(12, 2))
-console.log(Masiv2+' masiv2')
-
-function returnMinOutputMax() {           // Функція чомусь адекватно не працює -
-    maxNumberOfMasiv(Masiv2)             //  замість мах повертає цілий масив
-    return minNumberOfMasiv(Masiv2)
+function minAndMaxElement(arg) {
+    let min = arguments[0]
+    let max = arguments[0]
+    for (const element of arguments) {
+        if (element > max) {
+            max = element
+        }                                 //  Тут все для мене зрозуміло
+        if (element < min) {
+            min = element
+        }
+    }
+    console.log( max +" -- max ")
+    return min
 }
-returnMinOutputMax()
+minAndMaxElement(1, 2, 3)
+
+
+// let Masiv2 = []
+// Masiv2.push(createMasiv(12, 2))
+// console.log(Masiv2+' masiv2')
+//
+// function returnMinOutputMax() {           // Функція чомусь адекватно не працює -
+//     maxNumberOfMasiv(Masiv2)             //  замість мах повертає цілий масив
+//     return minNumberOfMasiv(Masiv2)
+// }
+// returnMinOutputMax()
 
 
 
@@ -154,7 +154,7 @@ console.log(' Функція приймає масив та робить з нь
     '// порядку. [1,2,3] -> [3, 2, 1].')
 
 
-function reverseMasiv(reverse_arr) {           // тут теж не працює(
+function reverseMasiv(reverse_arr) {
     let reverse_arr2 = []
     for (let i = reverse_arr.length - 1, j = 0; i >= 0; i--, j++) {
         reverse_arr2[j] = reverse_arr[i]
