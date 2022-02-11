@@ -67,7 +67,7 @@ console.log('Сворити функцію яка буде переносити 
     '// з значенням 0 у кінець маисву. Зберігаючи при\n' +
     '// цьому порядок не нульових значень.')
 
-const arr = [0, 0, 1, 0, 2, 3, 4]
+const arr = [ 0, 1, 0, 0, 0, 2, 0, 3, 4]
 console.log(arr+' - input array')
 let addNullToTheEnd = (arr) => {
     let upperBound = arr.length
@@ -84,3 +84,59 @@ let addNullToTheEnd = (arr) => {
 }
 
 addNullToTheEnd(arr)
+
+// - Сворити функцію яка буде переносити елементи
+// з значенням 0 у кінець маисву. Зберігаючи при
+// цьому порядок не нульових значень.
+// Двожина масиву від 2 до 100
+// EXAMPLE:
+// [1,0,6,0,3] => [1,6,3,0,0]
+// [0,1,2,3,4] => [1,2,3,4,0]
+// [0,0,1,0]   => [1,0,0,0]
+console.log('Сворити функцію яка буде переносити елементи\n' +
+    '// з значенням 0 у кінець маисву. Зберігаючи при\n' +
+    '// цьому порядок не нульових значень.')
+
+arr2 = [ 0, 1, 0, 0, 0, 2, 0, 3, 4]
+console.log(arr2+' - input array')
+
+let addNullToTheEnd2 = (arr) => {
+    let filtered = arr.filter((item, index) => {
+        console.log(index, item)
+        return item !== 0
+    })
+    let quantityOfZero = (arr.length - filtered.length)
+    console.log(filtered)
+    for (let i = 0; i < quantityOfZero; i++) {
+        filtered.push(0)
+
+    }
+    // filtered.concat(Array(arr.length - filtered.length).fill(0))
+    console.log(filtered)
+}
+addNullToTheEnd2(arr2 )
+
+
+
+
+// - Сворити функцію яка буде переносити елементи
+// з значенням 0 у кінець маисву. Зберігаючи при
+// цьому порядок не нульових значень.
+// Двожина масиву від 2 до 100
+// EXAMPLE:
+// [1,0,6,0,3] => [1,6,3,0,0]
+// [0,1,2,3,4] => [1,2,3,4,0]
+// [0,0,1,0]   => [1,0,0,0]
+console.log('Сворити функцію яка буде переносити елементи\n' +
+    '// з значенням 0 у кінець маисву. Зберігаючи при\n' +
+    '// цьому порядок не нульових значень.')
+
+arr3 = [ 0, 1, 0, 0, 0, 2, 0, 3, 4]
+console.log(arr3+' - input array')
+
+let addNullToTheEnd3 = (arr) => {
+    let filtered = arr.filter(el => el !== 0);
+    filtered.concat(Array(arr.length - filtered.length).fill(0));
+    console.log(filtered)
+}
+addNullToTheEnd3(arr3 )     // так чомусь не працює concat

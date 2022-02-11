@@ -66,9 +66,9 @@ let users = [
 //
 // console.log(filter)
 
-let filter = users.filter(function (user) {
+let filter = users.filter((user) => {
     return user.age > 30
-});           // як описати це стрілковою фнк?
+});
 console.log(filter);
 
 console.log('----------------=========------------------------')
