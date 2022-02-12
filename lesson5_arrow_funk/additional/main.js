@@ -42,9 +42,9 @@ console.log('функція Приймає масив та число "i", та\
     '// міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"')
 
 let createMasiv2 = (quantity, max_limit, low_limit) => {
-    let Array4 =  Array.from({length: quantity}, () => Math.floor(Math.random()*max_limit)-low_limit)
-    console.log(Array4+' --- masiv')
-    return Array4
+    let array4 =  Array.from({length: quantity}, () => Math.floor(Math.random()*max_limit)-low_limit)
+    console.log(array4+' --- masiv')
+    return array4
 }
 
 let changeByI = (arr, i) => {
@@ -136,7 +136,10 @@ console.log(arr3+' - input array')
 
 let addNullToTheEnd3 = (arr) => {
     let filtered = arr.filter(el => el !== 0);
-    filtered.concat(Array(arr.length - filtered.length).fill(0));
-    console.log(filtered)
+    let concat = filtered.concat(Array(arr.length - filtered.length).fill(0));
+    console.log(concat)
 }
-addNullToTheEnd3(arr3 )     // так чомусь не працює concat
+addNullToTheEnd3(arr3 )
+
+
+

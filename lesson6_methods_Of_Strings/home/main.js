@@ -22,6 +22,10 @@ let toUpperCase = (arr) => {
 }
 toUpperCase(arr)
 
+let lengthEmpty = 'javascript is cool';
+let upEmpty = lengthEmpty.toLocaleUpperCase();
+console.log(upEmpty);
+
 // - Перевести до нижнього регістру настипні стрінгові значення
 // 'HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'
 console.log('// Перевести до нижнього регістру настипні стрінгові значення')
@@ -70,17 +74,29 @@ stringToArray(str2)
 console.log('Напишіть функцію delete_characters(str, length),\n' +
     '// яка повертає підрядок, що складається із зазначеної кількості символів.')
 
-let str3 = 'Каждый охотник желает знать '
+let str3 = 'Каждый охотник желает знать'
+let delete_characters = (str, index) => {
+    return str.substr(0, index)
+}
+document.writeln(delete_characters(str3, 7))
+
+
+
+// функція яка повертає слово , що складається із зазначеної кількості символів
+
 let deleteCharacters = (str, length) => {
-    let newArray = str.split(' ')
-    console.log(newArray)
-    for (const newArrayElement of newArray) {
-        if (newArrayElement.length === 7) {
-            console.log(newArrayElement)
+    let arrayFromString = str.split(' ')
+    console.log(arrayFromString)
+    for (const arrayFromStringElement of arrayFromString) {
+        if (arrayFromStringElement.length === 7) {
+            console.log(arrayFromStringElement)
+            document.writeln('---'+arrayFromStringElement)
         }
     }
 }
 deleteCharacters(str3, 7)
+
+
 
 // - Напишіть функцію insert_dash(str), яка приймає рядок str
 // як аргумент і вставляє тире (-) між словами.
@@ -91,13 +107,49 @@ console.log('Напишіть функцію insert_dash(str), яка прийм
     '// як аргумент і вставляє тире (-) між словами.\n' +
     '// При цьому всі символи рядка необхідно перевести у верхній регістр.')
 
-let insertDash = (str) => {
+let str4 = "HTML JavaScript PHP"
+console.log(str4)
 
+let insertDash = (str) => {
+    let resOfSplitJoinUpper = str.split(' ').join('-').toUpperCase()
+    document.writeln(resOfSplitJoinUpper)
+    console.log(resOfSplitJoinUpper)
+    return resOfSplitJoinUpper
 }
+insertDash(str4)
+
 // - Напишіть функцію, яка приймає рядок як аргумент і
 // перетворює регістр першого символу рядка з нижнього регістру у верхній.
-//
-//
-//
+console.log('апишіть функцію, яка приймає рядок як аргумент і\n' +
+    '// перетворює регістр першого символу рядка з нижнього регістру у верхній.')
+
+
+let firstUp = (str) => {
+    if (!str) return str; // перевірка на те чи стрічка не пуста, а саме чи не пустий [0] індекс
+    return str[0].toUpperCase() + str.slice(1)
+};
+document.write(firstUp(' hello okten   '));  // коли ставлю пробіл перед першим словом,
+console.log(firstUp(' hello okten'));     // то перша буква не стає великою
+
+
+// let upperOfFirstSimbol = (str) => {   // це мій карявий варіант який теж не працює адекватно
+//     if (str[0] === true) {
+//         return str[0].toUpperCase() + str.slice(1)
+//     }  else {
+//         let res = str.slice(1)
+//         return upperOfFirstSimbol(res)
+//     }
+// }
+// console.log(upperOfFirstSimbol(' lol'))
+// document.writeln(upperOfFirstSimbol(' lol'))
+
 // - Напишіть функцію capitalize(str), яка повертає рядок
 // у якому кожне слово починається з великої літери.
+console.log('Напишіть функцію capitalize(str), яка повертає рядок\n' +
+    '// у якому кожне слово починається з великої літери.')
+
+let capitalize = (str) => {
+    return str.split(' ').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
+};
+document.write(capitalize('okten i love U'));
+console.log(capitalize('okten i love U'));
