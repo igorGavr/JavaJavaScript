@@ -1,72 +1,121 @@
-let str1 = 'okten hello  '
-console.log(str1)
-let concat = str1.concat('!!!')
-console.log(concat)
-console.log(str1)      // отримуємо нову стрінгу і стару
 
-let trim = str1.trim()   // обрізає пробіли
-console.log(trim)
 
-let email = 'asd@ads.com'
-let endsWith = email.endsWith('.com')  // startsWith('_')
-console.log(endsWith)
+//
+// - Дано список імен.
+//     let n1 = 'Harry..Potter'
+// let n2 = 'Ron---Whisley'
+// let n3 = 'Hermione__Granger'
+// Написати функцію, яка приймає будь яке не валідне імя,
+// та нормалізує його в наступнйи вигляд
+// let n1 = 'Harry Potter'
+// let n2 = 'Ron Whisley'
+// let n3 = 'Hermione Granger'
+console.log('Написати функцію, яка приймає будь яке не валідне імя,\n' +
+    '// та нормалізує його в наступнйи вигляд')
 
-// email.charAt(3)  повертає символ
-// email.indexOf('@')  повертає індекс
+let n1 = 'Harry..Potter'
+let n2 = 'Ron---Whisley'
+let n3 = 'Hermione__Granger'
 
-let replace = str1.replace('o', '!')
-console.log(str1)
+let name = (string, symbol) => {
+    let newArr = []
+    if (string.includes(symbol)) {
+        let a = string.split(symbol)
+        console.log(a)
+        a.forEach((item) => {
+            if (item) {newArr.push(item)
+        }})
+        console.log(newArr.join(' '))
+    }
+}
+name(n1, '.')
 
-let slice = str1.slice(0, 3)
-console.log(slice)
 
-let split = str1.split('e')
-console.log(split)
+//     - створити функцію, яка генерує масив рандомних числових
+//     цілих значень в діапазоні від 0 до 100.
+console.log('створити функцію, яка генерує масив рандомних числових\n' +
+    '//     цілих значень в діапазоні від 0 до 100.')
 
-let subst = str1.substr(0, 3)
-console.log(subst)
+let randomMasiv = (min, max, quantity) =>  {
+    let array1 = []
+    for (let i = 0; i < quantity; i++) {
+        array1.push(Math.floor(Math.random()*(max - min)+min))
+    }
+    console.log(array1)
+    return array1
+}
+let resultArray = randomMasiv(0, 100, 10)
 
-let anyString = 'Mozilla';
-let anyString4 = anyString.substring(anyString.length - 4);
-console.log(anyString4);
+// - створити (або згенерувати, за допомоги попередньої функції)
+// масив рандомних цілих числових значень. Відсортувати його за допомоги sort
+console.log('створити (або згенерувати, за допомоги попередньої функції)\n' +
+    '// масив рандомних цілих числових значень. Відсортувати його за допомоги sort')
 
-let numbers = [12, 1, 2, 3]
-console.log(Array.isArray(numbers))
-let unshift = numbers.unshift('@')
+let sortMasivUp = resultArray.sort(( a, b ) =>  a - b)
+console.log(sortMasivUp)
+let sortMasivDown = resultArray.sort((a, b) => b - a)
+console.log(sortMasivDown)
 
-let pop = numbers.pop()
-console.log(pop)
+// - створити (або згенерувати, за допомоги попередньої функції)
+// масив рандомних цілих числових значень. відфільтрувати  його
+// за допомоги filter, залишивши тільки парні числа
 
-let shift = numbers.shift()
-console.log(shift)
+console.log('створити (або згенерувати, за допомоги попередньої функції)\n' +
+    '// масив рандомних цілих числових значень. відфільтрувати  його\n' +
+    '// за допомоги filter, залишивши тільки парні числа')
 
-let slice2 = numbers.slice(1, 4)
-console.log(slice2)
-
-let splice = numbers.splice(1, 2, '23', true, false)
-console.log(splice)
-
-console.log(numbers)
-numbers.forEach(function (value) {
-    console.log(value)
-})
-
-numbers.filter((item, index) => {
-    console.log(index, item )
-})
-
-console.log(numbers)
-let filterArray = numbers.filter((item, index) => {
-    return item % 2 === 0
-    // if (item % 2 === 0) {
-    //     return true
-    // } else {
-    //     return false
-    // }
-})
+let filterArray = resultArray.filter(item => item%2 === 0)
 console.log(filterArray)
 
-let map = numbers.map(value => {
-    return value +''
-})
-console.log(map)
+// - створити масив рандомних цілих числових значень
+// (або згенерувати, за допомоги попередньої функції) .
+// за допомоги map та колбеку перетворити всі об'єкти
+// в масиві на стрінгові.
+console.log('створити масив рандомних цілих числових значень\n' +
+    '// (або згенерувати, за допомоги попередньої функції) .\n' +
+    '// за допомоги map та колбеку перетворити всі об\'єкти\n' +
+    '// в масиві на стрінгові.')
+
+let stringFromArray = resultArray.map(value => value+'')
+console.log(stringFromArray)
+
+let stringFromArray2 = resultArray.map(value => value.toString())
+console.log(stringFromArray2)
+
+// - створити функцію sortNums(direction), яка прймає масив чисел,
+// та сортує його від більшого до меньшого, або навпаки в
+// залежності від значення аргументу direction.
+//     let nums = [11,21,3];
+// sortNums('ascending') // [3,11,21]
+// sortNums('descending') // [21,11,3]
+console.log('створити функцію sortNums(direction), яка прймає масив чисел,\n' +
+    '// та сортує його від більшого до меньшого, або навпаки в\n' +
+    '// залежності від значення аргументу direction.')
+
+let sortNums = (array, direction) => {
+    if (direction === 'ascending') return array.sort((a, b) => a-b)
+    if (direction === 'descending') return array.sort((a, b) => a+b)
+}
+console.log(resultArray, 'descending')
+
+// - є масив
+// -- відсортувати його за спаданням за monthDuration
+// -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+console.log('відсортувати масив за спаданням за monthDuration')
+
+let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+
+console.log('відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців')
+let sortOfMonthDurations = coursesAndDurationArray.filter(value => value.monthDuration>5)
+console.log(sortOfMonthDurations)
+
+console.log('відсортувати його за спаданням за monthDuration')
+let sortOfDurations = coursesAndDurationArray.sort((a, b) => a.monthDuration - b.monthDuration)
+console.log(sortOfDurations)
