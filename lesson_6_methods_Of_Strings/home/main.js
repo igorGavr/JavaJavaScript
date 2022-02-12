@@ -124,24 +124,20 @@ console.log('апишіть функцію, яка приймає рядок я�
     '// перетворює регістр першого символу рядка з нижнього регістру у верхній.')
 
 
-let firstUp = (str) => {
-    if (!str) return str; // перевірка на те чи стрічка не пуста, а саме чи не пустий [0] індекс
-    return str[0].toUpperCase() + str.slice(1)
-};
-document.write(firstUp(' hello okten   '));  // коли ставлю пробіл перед першим словом,
-console.log(firstUp(' hello okten'));     // то перша буква не стає великою
+// let firstUp = (str) => {
+//     if (!str) return str; // перевірка на те чи стрічка не пуста, а саме чи не пустий [0] індекс
+//     return str[0].toUpperCase() + str.slice(1)
+// };
+// document.write(firstUp(' hello okten   '));  // коли ставлю пробіл перед першим словом,
+// console.log(firstUp(' hello okten'));     // то перша буква не стає великою
 
 
-// let upperOfFirstSimbol = (str) => {   // це мій карявий варіант який теж не працює адекватно
-//     if (str[0] === true) {
-//         return str[0].toUpperCase() + str.slice(1)
-//     }  else {
-//         let res = str.slice(1)
-//         return upperOfFirstSimbol(res)
-//     }
-// }
-// console.log(upperOfFirstSimbol(' lol'))
-// document.writeln(upperOfFirstSimbol(' lol'))
+let upperOfFirstSimbol = (str) => {   // це мій карявий варіант який  працює
+    let up = str.trim()
+    return up[0].toUpperCase() + up.slice(1)
+}
+console.log(upperOfFirstSimbol(' lol'))
+document.writeln(upperOfFirstSimbol(' lol'))
 
 // - Напишіть функцію capitalize(str), яка повертає рядок
 // у якому кожне слово починається з великої літери.
