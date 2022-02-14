@@ -25,7 +25,8 @@ let name = (string, symbol) => {
         a.forEach((item) => {
             if (item) {newArr.push(item)
         }})
-        console.log(newArr.join(' '))
+        console.log(newArr.join(' ').toString())
+        console.log(typeof newArr)
     }
 }
 name(n1, '.')
@@ -112,10 +113,12 @@ let coursesAndDurationArray = [
     {title: 'Frontend', monthDuration: 4}
 ];
 
+console.log('відсортувати його за спаданням за monthDuration')
+let sortOfDurations = coursesAndDurationArray
+    .sort((a, b) => a.monthDuration - b.monthDuration)
+console.log(sortOfDurations)
+
 console.log('відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців')
 let sortOfMonthDurations = coursesAndDurationArray.filter(value => value.monthDuration>5)
 console.log(sortOfMonthDurations)
 
-console.log('відсортувати його за спаданням за monthDuration')
-let sortOfDurations = coursesAndDurationArray.sort((a, b) => a.monthDuration - b.monthDuration)
-console.log(sortOfDurations)
