@@ -240,3 +240,19 @@ let newUsers = users.map((user) => {
     return newUsers1
 })
 console.log(newUsers)
+
+let user2 = users.reduce((acum, item) => {
+    if (item.status) {
+        acum[0].push(item)
+    } else {
+        acum[1].push(item)
+    }return acum
+}, [[], []])
+console.log(user2)
+
+let user3 = users.reduce((acum, item) => {
+    acum.id.push(item.id)
+    acum.age.push(item.age)
+    return acum
+}, {id:[], age:[]})
+console.log(user3)
