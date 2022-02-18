@@ -151,7 +151,7 @@ function userCard(number) {  // Створити функцію «userCard» я�
             if (number === undefined) {
                 number = ++quantityOfCards
             }
-            if (number >= 1 && number <= 3) {
+            if (number >= 1 && number <= 5) {
                 return number
             } else {
                 console.error(`Параметр key має бути числом в діапазоні[1; 3]`)
@@ -235,12 +235,12 @@ class UserAccount {
     }
 
     getCardByKey(key) {
-        if (key > 3) {
+        if (key > 5) {
             console.error('Число  має бути в діапазоні від 1 до 3')
             return {}
         }
         if (this.cards.find(item => item.getCardOptions().key === key)) {   // шукаємо карту в масиві карт за ключем
-            return this.cards.find(item => item.getCardOptions().key === key)
+            return userCard(key)
         } else {
             console.error('Карти з таким ідентифікатором не існує!')
             return {}
@@ -254,8 +254,10 @@ console.log(user)
 console.log(user2)
 user.addCard()     // створюємо карту1 для user
 user.addCard()     // створюємо карту2 для user
+user.addCard()     //  cтворюємо карту3 для user
 
 user2.addCard()     // створюємо карту1 для user2
+user2.addCard()
 
 console.log(user.cards)   // масив карт  користувача user
 console.log(user2.cards)  // масив карт  користувача user2
@@ -264,9 +266,13 @@ let card1User = user.getCardByKey(1)  //
 console.log(card1User.getCardOptions())  //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 1}
 let card2User = user.getCardByKey(2)
 console.log(card2User.getCardOptions())  // {balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 2}
+let card3User = user.getCardByKey(3)
+console.log(card3User.getCardOptions())  // {balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 3}
 
-let card1user2 = user2.getCardByKey(3)
+let card1user2 = user2.getCardByKey(4)
 console.log(card1user2.getCardOptions())  // {balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 3}
+let card2user2 = user2.getCardByKey(5)
+console.log(card2user2.getCardOptions())  // {balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 5}
 
 card1User.putCredits(155)
 
