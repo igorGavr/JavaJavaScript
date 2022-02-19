@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="content">Lorem ipsum dolor sit amet, consectetur adipisicing
+    elit. Blanditiis cupiditate deleniti
+    molestias mollitia pariatur porro saepe! Dolorem eaque earum
+    eligendi, iste maxime molestias quam vitae.
+    Dolore hic in quae sed.
+</p>
+
+<div id="rules" class="fc bp">
+    Первое правило Бойцовского клуба: никому не рассказывать о
+    Бойцовском клубе. Второе правило Бойцовского
+    клуба: никогда никому не рассказывать о Бойцовском клубе.
+    Третье правило Бойцовского клуба: в схватке
+    участвуют только двое. Четвертое правило Бойцовского клуба:
+    не более одного поединка за один раз
+</div>
+
+<ul>
+    <li class="fc_rules rule1">Первое правило Бойцовского клуба:
+        никому не рассказывать о Бойцовском клубе.</li>
+    <li class="fc_rules rule2">Второе правило Бойцовского
+        клуба: никогда никому не рассказывать о Бойцовском клубе
+    </li>
+    <li class="fc_rules rule3">Третье правило Бойцовского клуба:
+        в схватке
+        участвуют только двое.
+    </li>
+    <li class="fc_rules rule4">Четвертое правило Бойцовского клуба:
+        не более одного поединка за один раз</li>
+</ul>
+
+<script>
+    console.log('отримує текст з параграфа з id "content"')
+    let contentText = document.getElementById('content')
+    console.log(contentText)
+
+    console.log('отримує текст з блоку з id "rules"')
+    let rulesText = document.getElementById('rules')
+    console.log(rulesText)
+
+    console.log('замініть текст параграфа з id \'content\' на будь-який інший')
+    contentText.innerHTML = 'I LOVE YOU OKTEN'
+    console.log(contentText)
+
+    console.log('замініть текст параграфа з id \'rules\' на будь-який інший')
+    rulesText.innerHTML = 'Please resque me '
+    console.log(rulesText)
+
+    console.log('змініть кожному елементу колір фону на червоний')
+    let redBackground = document.body.children
+    for (const redBackgroundElement of redBackground) {
+        redBackgroundElement.style.backgroundColor = 'red'
+    }
+
+    console.log('змініть кожному елементу колір тексту на синій')
+    let textColor = document.body.children
+    for (const textColorElement of textColor) {
+        textColorElement.style.color = 'blue'
+    }
+
+    console.log('отримати весь список класів елемента з id=rules і вивести їх в console.log')
+    let rulesId = document.getElementById('rules')
+    console.log(rulesId.classList);
+
+    console.log('поміняти колір тексту у всіх елементів fc_rules на червоний')
+    let fc_rules = document.getElementsByClassName('fc_rules')
+    for (const fc_rulesElement of fc_rules) {
+        fc_rulesElement.style.color = 'red'
+    }
+</script>
+</body>
+</html>
