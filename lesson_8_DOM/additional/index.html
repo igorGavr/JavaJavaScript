@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="content"></div>
+<h1>Правила бойцовского клуба</h1>
+<div id="wrap">
+    <div class="rules rule1">
+        <h2>Первое правило Бойцовского клуба.</h2>
+        <p>Никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule2">
+        <h2>Второе правило Бойцовского клуба.</h2>
+        <p>Никогда никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule3">
+        <h2>Третье правило Бойцовского клуба.</h2>
+        <p>В схватке участвуют только двое.</p>
+    </div>
+    <div class="rules rule4">
+        <h2>Четвертое правило Бойцовского клуба.</h2>
+        <p>Не более одного поединка за один раз.</p>
+    </div>
+
+    <div class="rules rule5">
+        <h2>Пятое правило Бойцовского клуба.</h2>
+        <p>Бойцы сражаются без обуви и голые по пояс.</p>
+    </div>
+    <div class="rules rule6">
+        <h2>Шестое правило Бойцовского клуба.</h2>
+        <p>Поединок продолжается столько, сколько потребуется.</p>
+    </div>
+    <div class="rules rule7">
+        <h2>Седьмое правило Бойцовского клуба.</h2>
+        <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
+            окончен.</p>
+    </div>
+    <div class="rules rule8">
+        <h2>Восьмое и последнее правило Бойцовского клуба.</h2>
+        <p>Новичок обязан принять бой.</p>
+    </div>
+</div>
+
+
+
+<script>
+   // написати рекурсивну функцію, яка збирає всі назви класів з
+   // файлу rules.html в окремий масив. масив вивести в консоль
+
+
+   let array = []
+   function scraper(startElement) {
+       array.push(startElement.className)
+       let children = startElement.children
+       for (const child of children) {
+           scraper(child)
+       }
+   }
+   scraper(document.body)
+   console.log(array)
+
+
+   let filterArray = array.filter(value => {
+       return value
+   })
+   console.log(filterArray)
+
+
+   console.log('================================')
+
+
+   // Функція котра рахує кількість тегів на сторінці
+   function countTags(startElement) {
+       let numTags = 0
+       if (startElement.nodeType === 1) {
+           numTags++
+           //console.log(startElement)
+       }
+       let children = startElement.childNodes
+       for (let i = 0; i < children.length; i++) {
+           const child = children[i];
+           numTags += countTags(child)
+       }
+       return numTags
+   }
+   console.log(countTags(document.body));
+
+
+   // Функція знаходить всі елементи стоірнки і виводить їх
+   function getAllElements(startElement) {
+       //console.log(startElement)
+       let children = startElement.children
+       for (const child of children) {
+           getAllElements(child)
+       }
+   }
+   getAllElements(document.body)
+
+
+   let pList = document.querySelectorAll('body p')
+   for (const pListElement of pList) {
+       console.log(pListElement)
+       pListElement.style.backgroundColor = 'green'
+   }
+</script>
+</body>
+</html>
