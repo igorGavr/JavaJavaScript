@@ -63,13 +63,21 @@
    console.log(array)
 
 
-   let filterArray = array.filter(value => {
-       return value
-   })
-   console.log(filterArray)
-
+   let resultArray = []
+   for (const arrayElement of array) {
+       if (arrayElement) {
+           let item = arrayElement.split(' ')
+           for (const itemElement of item) {
+               resultArray.push(itemElement)
+           }
+       }
+   }
+   console.log(resultArray)
 
    console.log('================================')
+
+
+
 
 
    // Функція котра рахує кількість тегів на сторінці
