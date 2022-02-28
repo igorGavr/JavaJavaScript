@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="target ooo"></div>
+<div class="jack">jack</div>
+<div class="mary">mary</div>
+
+<script>
+    let h1 = document.createElement('h1')
+    document.body.appendChild(h1)
+    h1.innerText = 'okten'
+    document.body.appendChild(h1.cloneNode(true))
+
+    let target = document.getElementsByClassName('target')[0]
+    console.log(target)
+    target.append(h1)
+    let h1Clone = h1.cloneNode(true)
+    h1Clone.innerText = 'hell'
+    document.body.insertBefore(h1Clone, target)
+
+    target.classList.toggle('ooo')
+
+    let jack = document.getElementsByClassName('jack')[0]
+    console.log(jack)
+    console.log(jack.nextElementSibling)
+    console.log(jack.previousElementSibling)
+
+    let {id, name, age, status, wife: {name: wifeName}} = {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}}
+    console.log(id)
+    console.log(name)
+    console.log(wifeName)
+
+    function sdf({name, age}) {
+        console.log(name, age)
+    }
+    let er = {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}}
+    sdf(er)
+
+    let [num1, num2, num3] = [1, 2, 3]
+    console.log(num3) // 3
+
+    let user = [1, 2, 3, 4, 5, 6]
+    let user2 = [...user]
+
+
+    let arr4 = [
+        {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}},
+        {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}},
+        {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}},
+        {name:'farid', age:32, status:true, id:1, wife: {name: 'Lily'}}
+    ]
+    function foo(...item) {
+        console.log(item )
+        console.log('=====')
+    }
+    foo(...arr4)
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

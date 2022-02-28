@@ -4,40 +4,63 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .wrap{
+        .wrap1{
             background-color: #daffe3;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .wrap div{
+        .wrap1 div{
               display: flex;
               flex-direction: column;
               row-gap: 2px;
           }
-        .user{
+        .user1{
             background-color: #5b838c;
             width: 90%;
             margin: 5px;
         }
-        .id, .name, .username, .email , .phone, .website{
+        .id1, .name1, .username1, .email1 , .phone1, .website1{
             background-color: #9fbbff;
             width: 90%;
             text-align: center;
         }
-        .address, .company{
+        .address1{
+            /*background-color: #a464ff*/
+        }
+        .address1, .company1{
             width: 80%;
         }
         .street, .suite, .city, .zipcode{
             background-color: #a464ff;
         }
-        .geo{
+        .geo1{
             background-color: #ffd0b3;
             width: 90%;
             text-align: center;
         }
-        .company div{
+        .company1 div{
             background-color: #a464ff;
+        }
+        .wrap2{
+            border: 2px solid #bccebc;
+            /*background-color: #9fbbff;*/
+        }
+        .id2{
+            background-color: #fdff99;
+            margin-top: 43px;
+        }
+        .username2, .email2, .phone2, .website2{
+            width: 80%;
+            background-color: #ffdbc6;
+        }
+        .street2, .city2, .suite2, .zipcode2{
+            background-color: #ffbadd;
+            width: 70%;
+        }
+        .lat2, .lng2{
+            background-color: #d2c3ff;
+            width: 60%;
         }
 
 
@@ -47,6 +70,8 @@
 
 
 <script>
+
+
     // - Є масив :
 
     let usersList = [
@@ -281,34 +306,35 @@
             }
         }
     ];
-    // Створити під кожен елемент окремий блок. В цьому блоці, під кожну властивість,
+    // Створити під кожен елемент окремий блок. В цьому блоці, під кожну
+    // властивість,
     // та властивості внутрішніх об'єктів створити свої окремі блок.
     function courses(array) {
         let wrap = document.createElement('div')
-        wrap.classList.add('wrap')
+        wrap.classList.add('wrap1')
 
         for (const item of array) {
             let user = document.createElement('div')
-            user.classList.add('user')
+            user.classList.add('user1')
 
             let id = document.createElement('div')
-            id.classList.add('id')
+            id.classList.add('id1')
             id.innerText = `id - ${item['id']}`
 
             let name = document.createElement('div')
-            name.classList.add('name')
+            name.classList.add('name1')
             name.innerText = `name - ${item['name']}`
 
             let username = document.createElement('div')
-            username.classList.add('username')
+            username.classList.add('username1')
             username.innerText =`username - ${item['username']}`
 
             let email = document.createElement('div')
-            email.classList.add('email')
+            email.classList.add('email1')
             email.innerText = `email - ${item['email']}`
 
             let address = document.createElement('div')
-            address.classList.add('address')
+            address.classList.add('address1')
 
             for (const addressKey in item.address) {
                 let addressItem = document.createElement('div')
@@ -318,26 +344,26 @@
             }
 
             let geo = document.createElement('div')
-            geo.classList.add('geo')
+            geo.classList.add('geo1')
 
             let geoLat = document.createElement('div')
-            geoLat.classList.add('geoLat')
+            geoLat.classList.add('geoLat1')
             geoLat.innerText = `lat - ${item.address.geo['lat']}`
 
             let geoLng = document.createElement('div')
-            geoLng.classList.add('geoLng')
+            geoLng.classList.add('geoLng1')
             geoLng.innerText = `lng - ${item.address.geo['lng']}`
 
             let phone = document.createElement('div')
-            phone.classList.add('phone')
+            phone.classList.add('phone1')
             phone.innerText = `phone - ${item['phone']}`
 
             let website = document.createElement('div')
-            website.classList.add('website')
+            website.classList.add('website1')
             website.innerText = `website - ${item['website']}`
 
             let company = document.createElement('div')
-            company.classList.add('company')
+            company.classList.add('company1')
 
             for (const companyKey in item.company) {
                 let companyItem = document.createElement('div')
@@ -359,7 +385,49 @@
     courses(usersList)
 
 
-
+    //Створити під кожен елемент окремий блок. В цьому блоці, під кожну властивість,
+    // та властивості внутрішніх об'єктів створити свої окремі блок.
+    // {
+    //     id: 1,
+    //         name: 'Leanne Graham',
+    //     username: 'Bret',
+    //     email: 'Sincere@april.biz',
+    //     address: {
+    //     street: 'Kulas Light',
+    //         suite: 'Apt. 556',
+    //         city: 'Gwenborough',
+    //         zipcode: '92998-3874',
+    //         geo: {
+    //         lat: '-37.3159',
+    //             lng: '81.1496'
+    //     }
+    // },
+    //     phone: '1-770-736-8031 x56442',
+    //         website: 'hildegard.org',
+    //     company: {
+    //     name: 'Romaguera-Crona',
+    //         catchPhrase: 'Multi-layered client-server neural-net',
+    //         bs: 'harness real-time e-markets'
+    // }
+    // },
+    let obj = [...usersList]
+    let createUser = (obj) => {  //передаємо в якості аргументу масив
+        for (let key in obj) {//для кожного елементу масиву {id:...1}
+            let wrap2 = document.createElement('div')
+            wrap2.classList.add('wrap2')
+            if(typeof obj[key] !== 'object'){  //якщо елемент  не є об'єктом
+                let div = document.createElement("div"); //створюємо дів для кожного елементу
+                div.innerText =`${key}- ${obj[key]}`;   //всередину поміщаємо інформацію
+                div.classList.add(`${key}2`)   // задаємо клас
+                wrap2.appendChild(div)        //
+                document.body.appendChild(wrap2);  //
+            }else {
+                createUser(obj[key]);    // якщо елемент є об'єктом то визиваємо
+                // рекурсивно функцію
+            }
+        }
+    };
+    createUser(obj);
 </script>
 </body>
 </html>
