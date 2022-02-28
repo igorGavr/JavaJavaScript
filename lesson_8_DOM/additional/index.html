@@ -51,6 +51,22 @@
    // файлу rules.html в окремий масив. масив вивести в консоль
 
 
+   let classes = []
+   function collectClasses(startElement) {
+       let children = startElement.children
+       for (const child of children) {
+           for (const childElement of child.classList) {
+               if (classes.indexOf(childElement) === -1) {
+                   classes.push(childElement)
+               }
+           }
+           collectClasses(child)
+       }
+   }
+   collectClasses(document.body)
+   console.log(classes)
+
+
    let array = []
    function scraper(startElement) {
        array.push(startElement.className)
@@ -113,6 +129,9 @@
        console.log(pListElement)
        pListElement.style.backgroundColor = 'green'
    }
+
+
+
 </script>
 </body>
 </html>
