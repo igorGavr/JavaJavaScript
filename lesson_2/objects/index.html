@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<script>
+
+    // Objects
+    const cityField = 'city'
+    const job = 'frontend'
+
+    const person = {
+        age: 24,
+        name: 'Iva',
+        job,     // same job: job,
+        [cityField + ` ${Date.now()}`]: 'Tokio',
+        'village ': 'Gai',
+        print: () => 'hi',
+        toString() {
+            return Object
+            .keys(this)
+            .filter(key => key !== 'toString')
+            .map(key => this[key])
+            .join(' ')
+        }
+    }
+    console.log(person.toString())
+    console.log(person.print())
+    console.log(person)
+
+
+    // Methods
+    const first = {a: 1}
+    const second = {b: 2}
+
+    console.log(Object.is(first, second))  // compare
+    console.log(Object.assign(first, second)) // unite to first
+    console.log(first)
+    console.log(second)
+    let newObj = Object.assign({}, first, second);
+    console.log(newObj) // unite two first and second ,
+    // but we get new Object
+    console.log(Object.assign({}, newObj, {
+        c: 3,
+        d: 4,
+        f: 'kruto'
+    }))
+    console.log(Object.entries(newObj))
+    console.log(Object.keys(newObj))
+    console.log(Object.values(newObj))
+
+
+    // import MyLog, {Color, compute} from "./module";
+    //
+    // compute(12, 33)
+    // console.log(Color)
+    // MyLog.log()
+
+    // import * as Module from "./module"  // import all
+    // Module.compute()
+    // Module.Color
+    // Module.default.log()
+</script>
+</body>
+</html>
