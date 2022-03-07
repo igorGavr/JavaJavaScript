@@ -25,13 +25,13 @@ manipulator.setAge(26)
 console.log(manipulator.getAge())
 
 
-let user = {}
-user.name = 'vasya'
-user['age'] = 32
-console.log(user)
+let user0 = {}
+user0.name = 'vasya'
+user0['age'] = 32
+console.log(user0)
 
-delete user.age
-console.log(user)
+delete user0.age
+console.log(user0)
 
 
 let person  = {
@@ -94,47 +94,55 @@ class SuperUser {
     school
     auto
 
-    constructor(username, age, status, language, school, auto) {
+    constructor(username, age, status, language, school, v) {
         this.username = username;
         this.age = age;
         this.status = status;
         this.language = language;
         this.school = school;
-        this.auto = auto;
+        this.auto = {
+            engine: v,
+            horsesPower:122
+        }
     }
     greeting() {
         return 'hello my name is - '+this.username
     }
 }
 
-let user4 = new SuperUser('Gans', 45,
-                          'kosmos', 'elvish', 2, NaN )
+let user4 = new SuperUser('Mark', 233, true, ['ukr', 'ing'], 2, 2.4 )
 console.log(user4)
 
+class Person extends SuperUser{
+    statusKabluk
 
-
-class AnyAlkoBot extends SuperUser{
-    statusID
-    constructor(username, age, status, language, school, auto, statusID) {
-        super(username, age, status, language, school, auto);
-        this.statusID = statusID;
+    constructor(username, age, status, language, school, v, statusKabluk) {
+        super(username, age, status, language, school, v);
+        this.statusKabluk = statusKabluk;
     }
     order(runner, place, whatToBring, money) {
         return `hey ${runner} , 
-        go to ${place} and 
-        bring me ${whatToBring} , 
+    go to ${place} and 
+bring me ${whatToBring} , 
         can you lend me ${money} )))`
     }
 }
+let person1 = new Person('DamDam', 1222, true, NaN, NaN, 2.2, false)
+console.log(person1)
+console.log(person1.order('Cack Noris', 'Chinese', 'Vodka', 120))
 
-let user5 = new AnyAlkoBot('Dyadya Vania', 56, 'kabluk',
-                            'mut', 3, 'BMW')
-console.log(user5)
-console.log(user5.greeting(),user5.order('Мутант Вусатий', 'Китайця',
-    'Нанашку', 140))
+class AlkoBot extends Person{
+    alko
 
-let user6 = new AnyAlkoBot('djeki chan', 23, 'rab',
-    'ua', 1, 'jiga', 'nelegal')
+    constructor(username, age, status, language, school, v, statusKabluk, alko) {
+        super(username, age, status, language, school, v, statusKabluk);
+        this.alko = alko;
+    }
+}
+let alkoLover = new AlkoBot('', 23, true, '', '', NaN, true, 'Pivo')
+console.log(alkoLover)
+
+
 
 
 
@@ -182,7 +190,7 @@ class Cars2 {
     }
 }
 
-let mers = new Cars2('mers', false, 0, 2.5)
+let mers = new Cars2('mers', false, 0)
 console.log(mers)
 console.log(new Cars2().engine.isTurnOn)
 
