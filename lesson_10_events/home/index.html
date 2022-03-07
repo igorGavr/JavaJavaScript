@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 12px;
+        }
+        .menu{
+            cursor: pointer;
+        }
+        .menu.hidden ul{
+            display: none;
+        }
+        .pHidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h2>task1</h2>
+<div id="text">task 1</div>
+<input type="button" id="button" value="Press to hide the text"/>
+
+<h2>task2</h2>
+<input type="text" id="age">
+<input type="button" id="button1" value="Check the entered age">
+
+<h2>task3</h2>
+<div class="menu">
+    <h2 class="title">MENU</h2>
+    <ul>
+        <li>About</li>
+        <li>Home work</li>
+        <li>Class work</li>
+    </ul>
+</div>
+<script>
+    // - Создать произвольный елемент с id = text.  Используя JavaScript, сделайте так,
+    // чтобы при клике на кнопку исчезал элемент с id="text".
+    // let task1 = document.getElementById('text')
+    // let button = document.getElementById('button')
+    // button.onclick = function () {
+    //     task1.style.display = 'none'
+    // }
+
+    document.getElementById('button').onclick = function () {
+        document.getElementById('text').hidden = true    //те саме що display: none
+    }
+
+
+    // - Создайте кнопку, при клике на которую, она будет скрывать сама себя.
+
+    // document.getElementById('button').onclick = function () {
+    //     document.getElementById('button').hidden =  true
+    // }
+
+
+    // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.
+    // При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік
+    // чи меньше він ніж 18, та повідомити про це користувача
+
+    document.getElementById('button1').onclick = function () {
+        let age = document.getElementById('age').value
+        if (!age) {
+            alert('You didnt enter your age!')
+        }else if(+age < 18) {
+            alert('You are too young, little rascal')
+        }else {
+            alert('Ok, do what you want')
+        }
+    }
+
+
+    // - Создайте меню, которое раскрывается/сворачивается при клике
+
+    let menu = document.querySelector('.menu')
+    let title = document.querySelector('.title')
+
+    title.onclick = function () {
+        menu.classList.toggle('hidden')
+    }
+
+    // - Создать список комментариев , пример объекта коментария -
+    // {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
+    //     Вывести список комментариев в документ, каждый в своем блоке.
+    //     Добавьте каждому комментарию по кнопке для сворачивания
+    //     его body.
+
+    let coments = [
+        {name:'Putin', body:'Im a sick jerk '},
+        {name: 'Zela', body: 'Slava Ukraini, duck u'},
+        {name: 'Evropa', body: 'We will finally get 5 million slaves from Ulraine'}
+    ]
+    let mainDiv = document.createElement('div')
+    for (const item of coments) {
+        let div = document.createElement('div')
+        let h3 = document.createElement('h3')
+        let p = document.createElement('p')
+        let button = document.createElement('button')
+
+        h3.innerText = item.name
+        p.innerText = item.body
+        if (item.name === 'Zela'){
+            button.innerHTML = 'Hide this '
+        }else {
+            button.innerHTML = 'Hide this shit'
+        }
+
+        button.onclick = function () {
+            p.classList.add('pHidden')
+        }
+        div.append(h3, p, button)
+        mainDiv.append(div)
+    }
+    document.body.append(mainDiv)
+</script>
+</body>
+</html>

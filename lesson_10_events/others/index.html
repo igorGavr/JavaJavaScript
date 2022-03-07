@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .target{
+            width: 200px;
+            height: 200px;
+            background-color: #9fbbff;
+        }
+    </style>
+</head>
+<body>
+<div class="target"></div>
+
+
+<h1 id="title"></h1>
+
+<form action="" name="form1" >
+    <input type="text" name="login" value=" f">
+    <button>Save</button>
+</form>
+
+<br>
+
+<button id = 'btn1'> click me</button>
+
+<form>
+    <input type="text" name="login">
+    <input type="text" name="password">
+    <button> sign in </button>
+</form>
+
+<script>
+
+    let target = document.getElementsByClassName('target')[0]
+    console.log(target)
+    target.onclick = function () {
+        console.log('click')
+    }
+    target.addEventListener('click', function () {
+        console.log('click1')
+    })
+    target.addEventListener('click', function () {
+        console.log('click2')
+    })
+    target.onmousemove = function (event) {
+        console.log('event')
+    }
+    target.onmousemove = function (e) {
+        let x = e.clientX
+        let y  = e.clientY
+        console.log(x, y)
+        this.style.background = `rgb(${x}, ${y}, ${x-23})`
+    }
+
+
+    document.forms.form1.onsubmit = function (e) {
+        e.preventDefault()
+        console.log('submit')
+    }
+
+    form1.login.oninput = function (e) {
+        console.log(this.value)
+    }
+
+    let btn1 = document.getElementById('btn1')
+
+    btn1.addEventListener('click', function (e) {
+        console.log('click2')
+        console.log(e.target)
+        console.log(e.timeStamp)
+    })
+
+
+    let title = document.getElementById('title')
+    document.onmousemove = function (e) {
+        title.innerText = `x - ${e.clientX}, y - ${e.clientY}`
+    }
+
+
+    let points = []
+    document.onclick = function (e) {
+        points.push({x: e.clientX, y: e.clientY})
+    }
+    btn1.addEventListener('click', () => {
+        console.log(points)
+    })
+
+    let users = []
+    let form = document.forms[1]
+    form.onsubmit = function (e) {
+        e.preventDefault()
+        console.log('submit')
+        let user = {login : e.target.login.value,
+            password:e.target.password.value}
+        users.push(user)
+        console.log(users)
+        console.log(e.target.login.value)
+        console.log(e.target.password.value)
+    }
+
+    let inputLogin = form.login
+    inputLogin.addEventListener('input', (e) => {
+        if (e.target.value.toLowerCase().includes('duck')) {
+            alert('atata')
+        }
+    })
+</script>
+</body>
+</html>

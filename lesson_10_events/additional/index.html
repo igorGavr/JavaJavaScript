@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .target1, .target2, .target3{
+            height: 100px;
+        }
+        .target1{
+            background-color: #ffd8af;
+        }
+        .target2{
+            background-color: #9fbbff;
+        }
+        .target3{
+            background-color: green;
+        }
+        .popup{
+            width: 200px;
+            height: 200px;
+            background-color: #bccebc;
+            position: fixed;
+            padding: 12px;
+            top: 45px;
+            left: 40%;
+        }
+        .Hide{
+            display: none;
+        }
+        .active{
+            display: block;
+        }
+        .resultStatus li{
+            background-color: #9fbbff;
+            margin: 12px;
+        }
+        .resultAge li{
+            background-color: #d2c3ff;
+            margin: 12px;
+        }
+        .resultCity li{
+            background-color: #a2ceac;
+            margin: 12px;
+        }
+        .wrap1{
+            height: 330px;
+            font-size: 20px;
+        }
+        .mykarousel img{
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="target1 target4" id="1"></div>
+<div class="target2"></div>
+<div class="target3"></div>
+
+
+<div class="wrap1">
+    <h2>Status</h2>
+    <input type="checkbox" name="status" id="checkboxStatus">
+    <ul class="resultStatus"></ul>
+    <h2>Users who are 29 +</h2>
+    <input type="checkbox" name="age" id="checkboxAge29Older">
+    <ul class="resultAge"></ul>
+    <h2>Users who live in Kyiv</h2>
+    <input type="checkbox" name="status" id="checkboxCityKyiv">
+    <ul class="resultCity"></ul>
+</div>
+
+
+<script>
+    // - Описати скріпт, котрий, якщо доєднати до будь-якої сторінки
+    // дозволить
+    // зробити наступне:
+    //     При лівому кліку миші вивести в консоль інформацію про
+    //     блок або елемент
+    //     на який відбувся клік.
+    //     Інформація яку потрібно вивести: Назва тегу, список класів,
+    //     список ід,
+    //     розміри в форматі висота*ширина
+
+
+    // Функція знаходить всі елементи стоірнки і виводить їх
+    let array = []
+    function getAllElements(startElement) {
+        console.log(startElement)
+        array.push({block: startElement, class: startElement.classList})
+        let children = startElement.children
+        for (const child of children) {
+            getAllElements(child)
+        }
+    }
+    getAllElements(document.body)
+    console.log('Elements of this site and theirs classes')
+    console.log(array)
+
+
+    window.addEventListener('click', e => {
+        let target = e.target
+        if (target.id) {
+            id = target.id
+        } else {
+            id = 0
+        }
+        if (target.classList) {
+            classOfEl = target.classList
+        } else {
+            classOfEl = 0   // чомусь не виводить 0
+        }
+        console.log(`Block - ${target},
+
+Classes - ${classOfEl} ,
+
+Id - ${id},
+
+Height - ${target.offsetHeight},
+
+Width - ${target.offsetWidth}`)
+    })
+
+
+    // - Описати скріпт, котрий, якщо доєднати до будь-якої сторінки дозволить
+    // зробити наступне:
+    //     При лівому кліку миші  зробить popup (спливаючий блок) в якому буде
+    //     вся інформація про блок.
+    //     Інформація яку потрібно вивести в popup: Назва тегу, список класів,
+    //     список ід, розміри в форматі висота*ширина
+
+    window.addEventListener('click', ev => {
+        let target = ev.target
+        if (target.id) {
+            id = target.id
+        } else {
+            id = 0
+        }
+        if (target.classList) {
+            classOfEl = target.classList
+        } else {
+            classOfEl = 0    // чомусь не виводить 0
+        }
+        let popup = document.createElement('div')
+        popup.classList.add('popup')
+        popup.innerText = `Block - ${target},
+
+Classes - ${classOfEl} ,
+
+Id - ${id},
+
+Height - ${target.offsetHeight},
+
+Width - ${target.offsetWidth}`
+        document.body.append(popup)
+    })
+
+    // -- взять массив пользователей
+    let usersWithAddress = [
+        {id:1,name: 'vasya', age: 31, status: false,
+            address:
+                {city: 'Lviv', street: 'Shevchenko', number: 16}},
+        {id:2,name: 'petya', age: 30, status: true,
+            address:
+                {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+        {id:3,name: 'kolya', age: 29, status: true,
+            address:
+                {city: 'Lviv', street: 'Shevchenko', number: 121}},
+        {id:4,name: 'olya', age: 28, status: false,
+            address:
+                {city: 'Ternopil', street: 'Shevchenko', number: 90}},
+        {id:5,name: 'max', age: 30, status: true,
+            address:
+                {city: 'Lviv', street: 'Shevchenko', number: 115}},
+        {id:6,name: 'anya', age: 31, status: false,
+            address:
+                {city: 'Kyiv', street: 'Shevchenko', number: 2}},
+        {id:7,name: 'oleg', age: 28, status: false,
+            address:
+                {city: 'Ternopil', street: 'Shevchenko', number: 22}},
+        {id:8,name: 'andrey', age: 29, status: true,
+            address:
+                {city: 'Lviv', street: 'Shevchenko', number: 43}},
+        {id:9,name: 'masha', age: 30, status: true,
+            address:
+                {city: 'Kyiv', street: 'Shevchenko', number: 12}},
+        {id:10,name: 'olya', age: 31, status: false,
+            address:
+                {city: 'Lviv', street: 'Shevchenko', number: 16}},
+        {id:11,name: 'max', age: 31, status: true,
+            address:
+                {city: 'Ternopil', street: 'Shevchenko', number: 121}}
+    ];
+    // - Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива.
+    // Фильтры могут работать как вместе так и по отдельности.
+    // 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
+    // 2й - оставляет старше 29 лет включительно
+    // 3й - оставляет тех у кого город киев
+    // Данные выводить в документ
+
+
+    let resultStatus = document.getElementsByClassName('resultStatus')[0]
+    let checkboxStatus = document.getElementById('checkboxStatus')
+    checkboxStatus.onclick = function (e) {
+        resultStatus.innerText = ''
+        let arrayStatus = []
+        if (checkboxStatus.checked) {
+            arrayStatus = usersWithAddress.filter(value => value.status)
+        }else {
+            arrayStatus = usersWithAddress.filter(value => !value.status)
+        }
+        for (const item of arrayStatus) {
+            let li = document.createElement('li')
+            li.innerText = `Id - ${item.id}
+            Name - ${item.name}
+            Age - ${item.age}
+            Status - ${item.status}
+            City - ${item.address.city}
+            Street - ${item.address.street}
+            Number - ${item.address.number}`
+            resultStatus.append(li)
+        }
+    }
+
+
+    let resultAge = document.getElementsByClassName('resultAge')[0]
+    let checkboxAge29Older = document.getElementById('checkboxAge29Older')
+    checkboxAge29Older.onclick = function (e) {
+        resultAge.innerText = ''
+        let arrayAge = []
+        if (checkboxAge29Older.checked) {
+            arrayAge = usersWithAddress.filter(value => value.age>=29)}
+        for (const item of arrayAge) {
+            let li = document.createElement('li')
+            li.innerText = `Id - ${item.id}
+            Name - ${item.name}
+            Age - ${item.age}
+            Status - ${item.status}
+            City - ${item.address.city}
+            Street - ${item.address.street}
+            Number - ${item.address.number}`
+            resultAge.append(li)
+
+        }
+    }
+
+
+    let resultCity = document.getElementsByClassName('resultCity')[0]
+    let checkboxCityKyiv = document.getElementById('checkboxCityKyiv')
+    checkboxCityKyiv.onclick = function (e) {
+        resultCity.innerText = ''
+        let arrayKyiv = []
+        if (checkboxCityKyiv.checked) {
+            arrayKyiv = usersWithAddress.filter(value => value.address.city='Kyiv')}
+        for (const item of arrayKyiv) {
+            let li = document.createElement('li')
+            li.innerText = `Id - ${item.id}
+            Name - ${item.name}
+            Age - ${item.age}
+            Status - ${item.status}
+            City - ${item.address.city}
+            Street - ${item.address.street}
+            Number - ${item.address.number}`
+            resultCity.append(li)
+        }
+
+    }
+
+    // *****(Прям овердоз с рекурсией) Создать функцию которая принимает какой-либо
+    // элемент DOM-структуры .Функция создает в боди 2 кнопки (назад/вперед)
+    // при нажатии вперед, вы переходите к дочернему элементу, при еще одном нажатии
+    // на "вперед", вы переходите к следующему дочернему элементу
+    // (лежащему на одном уровне)
+    // НО если у (какого-либо)дочеренего элемента есть дети, то нажатие "вперед"
+    // позволяет нам войти внутрь элемента и  выводит первого ребенка. и тд.
+    //     Когда все дети заканчиваются, мы выходим из данного дочернего элемента
+    //     и переходим к следующему, лежащему с ним на одном уровне
+    //
+    // - Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо
+    // нажатием на стрелочки.
+
+    //     Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде
+    //     погуглити
+    // *** При виділені сегменту тексту на сторін
+
+</script>
+</body>
+</html>

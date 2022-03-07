@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrap">
+    <form class="form1">
+        <h3>Container 1</h3>
+        <input name="input1">
+        <input name="input2">
+    </form>
+
+    <form class="form2">
+        <h3>Container 1</h3>
+        <input name="input3">
+        <input name="input4">
+    </form>
+
+    <button class="btn2">Save</button>
+</div>
+
+
+
+<script>
+    // створити 2 форми  по 2 інпути в кожній. ствоирити кнопку при
+    // кліку на яку считується та виводиться на консоль інформація
+    // з цих 2х форм.
+    //     Кнопка повинна лежати за межами форм (Щоб ьуникнути
+    //     перезавантаження сторінки)
+    // Доступ до інпутів через Forms API. Отже дайте формі та
+    // інпутам всі необхідні атрибути.
+
+
+    // let button2 = document.getElementsByClassName('btn2')
+    //
+    // button2.addEventListener('click', function (){
+    //     let form1 = document.getElementsByClassName('form1')
+    //     console.log(document.forms.form1.input1.value)
+    // })
+    //  Чому тут не працює?
+
+
+    let divOne = document.createElement('div');
+    divOne.innerText = 'Контейнер 1';
+    divOne.style.margin = '20px';
+    document.body.appendChild(divOne);
+    let divTwo = document.createElement('div');
+    divTwo.innerText = 'Контейнер 2';
+    divTwo.style.margin = '20px';
+
+    document.body.appendChild(divTwo);
+    let formOne = document.createElement('form');
+    formOne.setAttribute('name', 'formOne');
+
+    divOne.appendChild(formOne);
+    let formTwo = document.createElement('form');
+    formTwo.setAttribute('name', 'formTwo');
+
+    divTwo.appendChild(formTwo);
+    let inputeOne = document.createElement('input');
+
+    inputeOne.setAttribute('name', 'inputeOne');
+    let inputeTwo = document.createElement('input');
+
+    inputeTwo.setAttribute('name', 'inputeTwo');
+    let inputeThree = document.createElement('input');
+
+    inputeThree.setAttribute('name', 'inputeThree');
+    let inputeFour = document.createElement('input');
+
+    inputeFour.setAttribute('name', 'inputeFour');
+    let button1 = document.createElement('button');
+
+    button1.innerText = 'Go';
+
+    document.body.appendChild(button1);
+    formOne.append(inputeOne,inputeTwo);
+
+
+    formTwo.append(inputeThree,inputeFour);
+
+
+    button1.addEventListener('click', function (){
+        console.log(document.forms.formOne.inputeOne.value);
+        console.log(document.forms.formOne.inputeTwo.value);
+        console.log(document.forms.formTwo.inputeThree.value);
+        console.log(document.forms.formTwo.inputeFour.value);
+    })
+
+    // - Створити 3 инпута та кнопку. Один визначає кількість рядків,
+    // другий - кількість ячеєк, третій вмиіст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і
+    //     формується табличка, з відповідним вмістом.
+    // (Додатковачастина для завдання)
+    let h1 = document.createElement('h1')
+    h1.innerText = 'Task 3'
+    let input1 = document.createElement('input')
+    let input2 = document.createElement('input')
+    let input3 = document.createElement('input')
+    let button3 = document.createElement('button')
+    button3.innerText = 'Press'
+    document.body.append(h1, input1, input2, input3, button3)
+
+    button3.addEventListener('click', function () {
+        let tr = input1.value
+        let td = input2.value
+        let enterText = input3.value
+
+        function generateTable(tr, td, enterText) {
+            let table = document.createElement('table')
+            table.style.border = '1px solid red'
+            document.body.append(table)
+
+            for (let i = 0; i < tr; i++) {
+                let tr = document.createElement('tr')
+                tr.style.border = '1px solid blue'
+                for (let j = 0; j < td; j++) {
+                    let td = document.createElement('td')
+                    td.style.border = '1px solid green'
+                    td.innerText  = `${enterText}`
+                    table.append(tr)
+                    tr.append(td)
+                }
+            }
+        }
+        generateTable(tr, td, enterText)
+    })
+
+    // - Сворити масив не цензцрних слів.
+    //     Сворити інпут текстового типу.
+    //     Якщо людина вводить слово і воно міститься в масиві не
+    //     цензурних слів
+    // кинути алерт з попередженням.
+    //     Перевірку робити при натисканні на кнопку
+
+    let badWords = ['fuck', 'Putin', 'i']
+    let h4 = document.createElement('h1')
+    h4.innerText = 'Task 4'
+    let input4 = document.createElement('input')
+    let button4 = document.createElement('button')
+    button4.innerText = 'check'
+    document.body.append(h4, input4, button4)
+
+    button4.addEventListener('click', function () {
+        let valueInput = input4.value
+        for (const badWord of badWords) {
+            if (badWord === valueInput) {
+                alert('atata')
+                input4.value = ''
+                return
+            }
+        }
+        if (valueInput) {
+            alert('good boy')
+            input4.value = ''
+        }
+    })
+    // - Сворити масив не цензцрних слів.
+    //     Сворити інпут текстового типу.
+    //     Потрібно перевіряти чи не містить ціле речення в собі
+    //     погані слова.
+    //     Кинути алерт з попередженням у випадку якщо містить.
+    //     Перевірку робити при натисканні на кнопку
+
+    let badWords2 = ['fuck', 'Putin', 'i']
+    let h5 = document.createElement('h1')
+    h5.innerText = 'Task 5'
+    let input5 = document.createElement('input')
+    let button5 = document.createElement('button')
+    button5.innerText = 'check'
+    document.body.append(h5, input5, button5)
+
+    button5.addEventListener('click', function () {
+        let valueInput = input5.value.split(' ')
+        for (const string of valueInput) {
+            for (const badWord of badWords) {
+                if (string === badWord) {
+                    alert('atata')
+                    input4.value = ''
+                    return
+                }
+            }
+            if (valueInput) {
+                alert('good boy')
+                input5.value = ''
+            }
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

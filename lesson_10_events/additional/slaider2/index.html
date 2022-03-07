@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .slider{
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+            height: 800px;
+            margin-bottom: 15px;
+        }
+        .slider .item img {
+            object-fit: cover;
+            width: 100%;
+            height: 90%;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .slider .prev, .slider .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: #fffcfc;
+            font-weight: bold;
+            font-size:24px;
+            transition: 2s ease;
+            border-radius: 0 3px 3px 0;
+        }
+        .slider .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .slider .prev:hover,
+        .slider .next:hover {
+            background-color: rgba(192, 130, 130, 0.8);
+        }
+        .slideText {
+            position: absolute;
+            color: #fff;
+            font-size: 35px;
+            left: 50%;
+            top: 97%;
+            transform: translate(-50%, -50%);
+            text-shadow: 1px 1px 1px #6e5959, 0 0 1em #775353;
+        }
+        .slider-dots {
+            text-align: center;
+        }
+        .slider-dots_item{
+            cursor: pointer;
+            height: 23px;
+            width: 23px;
+            margin: 0 2px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active,
+        .slider-dots_item:hover {
+            background-color: #e1a0a0;
+        }
+        .slider .item {
+            transition: 2s ease;
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 3s;
+            animation-name: fade;
+            animation-duration: 3s;
+        }
+        @-webkit-keyframes fade {
+            from {
+                opacity: .8
+            }
+            to {
+                opacity: 1
+            }
+        }
+        @keyframes fade {
+            from {
+                opacity: .8
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="slider">
+    <div class="item">
+        <img src="img/q1.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q2.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q4.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q5.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q6.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q7.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q9.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q10.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q11.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q12.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+    <div class="item">
+        <img src="img/q13.jpg" alt="Cлайд 1">
+        <div class="slideText">Слайд 1</div>
+    </div>
+
+    <a class="prev" >&#10094;</a>
+    <a class="next" >&#10095;</a>
+</div>
+
+<div class="slider-dots">
+    <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+
+    <span class="slider-dots_item" onclick="currentSlide(4)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(5)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(6)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(7)"></span>
+
+    <span class="slider-dots_item" onclick="currentSlide(9)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(10)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(11)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(12)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(13)"></span>
+
+</div>
+
+<script>
+    // За замовчуванням відображаємо перший слайд
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    //При натиску на праву стрілку (next) відображаємо наступний слайд
+   let nextSlide = document.getElementsByClassName('next')[0]
+    nextSlide.addEventListener('click', (e => {
+        showSlides(slideIndex += 1)
+    }))
+
+    //При натиску на ліву стрілку (prev) відображаємо попередній слайд
+    let prevSlide = document.getElementsByClassName('prev')[0]
+    prevSlide.addEventListener('click', (e => {
+        showSlides(slideIndex -= 1)
+    }))
+
+    // Функція яка відображає оточний слайд ,
+    // за допомогою цієї функції ми відображаємо слайд при натиску на відповідне кружельце
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    // Функція яка відображає слайд n , де n = slideIndex
+    function showSlides(n) {
+        let slides = document.getElementsByClassName("item");
+        let dots = document.getElementsByClassName("slider-dots_item");
+        // Задаємо умови за допомогою яких переключаємося з останього слайду на перший
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        // Задаємо умови за допомогою яких переключаємося з першого слайду на останній
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        // Для кожного слайду задаємо стиль display = "none"
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        // Для кожного кружка заміняємо клас " active" на  ""
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        // Для першого слайду задаємо клас display = "block"
+        slides[slideIndex - 1].style.display = "block";
+        // Для першого кружка задаємо клас " active"
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+</body>
+</html>
