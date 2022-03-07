@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    ///////////////////////////////////
+    //
+    //         Konstruktor
+    //
+    ///////////////////////////////////
+    class Person {
+        type = 'Human'
+
+        constructor(name) {
+            this.name = name;
+        }
+        greet() {
+            console.log(this.name + ' HI !')
+        }
+    }
+
+    class ProgSlave  extends   Person {
+        constructor(name, job) {
+            super(name);
+            this._job = job;
+        }
+    }
+
+    const frontend = new ProgSlave('Livot', 'Frontend')
+    console.log(frontend)
+    frontend.greet()
+
+
+    class Util {
+        static average(...args) {
+            return args.reduce((acc, i) => acc += i , 0)/args.length
+        }
+    }
+    console.log(Util.average(1, 2, 3, 4, 5))
+
+    ///////////////////////////////////
+    //
+    //         Symbol
+    //
+    ///////////////////////////////////
+    const symbol = Symbol('demo')
+
+     const obj = {
+         name: 'Eva',
+         demo: 'DEMO',
+         [symbol]: 'meta'
+     }
+
+    for (const objKey in obj) {
+        console.log(objKey)        // name , demo
+    }
+
+    console.log(obj.demo)
+    console.log(obj[symbol])
+
+    ///////////////////////////////////
+    //
+    //        Generators
+    //
+    ///////////////////////////////////
+    const array = [1, 2, 3, 4]
+    const str = 'Hello'
+
+    console.log(array[Symbol.iterator])
+
+    // custom iterator
+    const country = {
+        value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        [Symbol.iterator]() {
+            let i = 0
+            return{
+                next: () => {
+                    const value = this.value[i]
+                    i+=3
+                    return{
+                        done: i > this.value.length*2,
+                        value
+                    }
+                }
+            }
+        }
+    }
+    for (const countryElement of country) {
+        console.log(countryElement)
+    }
+
+    // generator
+    function *gen(num = 4) {
+        for (let i = 0; i < num; i++) {
+            try {
+                yield i
+            } catch (e) {
+                console.log('Error', e)
+            }
+        }
+    }
+
+    const iter = gen(3)
+    console.log(iter.next())  // the ability to iterate in portions
+    console.log(iter.throw('my error'))
+    console.log(iter.next())
+    console.log(iter.next())
+</script>
+</body>
+</html>

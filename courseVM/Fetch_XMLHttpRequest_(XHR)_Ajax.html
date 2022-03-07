@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    const requestUrl = 'https://jsonplaceholder.typicode.com/users'
+
+    function sendRequest(method, url, body = null) {
+        return new Promise(((resolve, reject) => {
+            const xhr = new XMLHttpRequest()
+
+            xhr.open(method, url)
+
+            xhr.responseType = 'json'
+            //xhr.setRequestHeader('Content-Type', 'application/json')
+
+            xhr.onload = () => {
+                if (xhr.status >= 400) {
+                    reject(xhr.response)
+                }else {
+                    resolve(xhr.response)
+                }
+            }
+            xhr.onerror = () => {
+                resolve(xhr.response)
+            }
+            xhr.send()// JSON.stringify(body)
+        }))
+    }
+    sendRequest('GET', requestUrl)
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+
+    // const body = {
+    //     name: 'Raga',
+    //     age: 24
+    // }
+    // sendRequest('POST', requestUrl, body)
+    //     .then(data => console.log(data))
+        //.catch(err => console.log(err))
+        //.finally(() => console.log('Request was successful'))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+     const map = new Map(
+         [['a', 1]]
+     )
+     console.log(map.get('a'))
+     map.set('b', 2).set(NaN, 'Number').set(23, 'demo')
+     //map.clear()
+     console.log(map.has(23))
+     map.delete(NaN)
+     console.log(map.size)
+
+     console.log(map.keys())
+     console.log(map.entries())
+     console.log(map.values())
+
+     // Set
+     const set = new Set([1, 1, 2, 3, 5, 5, 8, 8, 13])
+     console.log(set)
+     console.log(set.size)
+     console.log(set.add(21))
+     // set.clear()
+     set.delete(1)
+     console.log(set)
+
+     console.log(set.keys())
+     console.log(set.values())
+     console.log(set.entries())
+</script>
+</body>
+</html>

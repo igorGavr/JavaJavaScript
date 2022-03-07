@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box1"></div>
+
+<div id="circle"></div>
+
+<script>
+
+    // const animal = {
+    //     name: 'Bull',
+    //     age: 3,
+    //     hasTail: true
+    // }
+
+    class Animal {
+        static type = 'ANIMAL'
+        constructor(name, age, hasTail) {
+            this.name = name;
+            this.age = age;
+            this.hasTail = hasTail;
+        }
+        voice() {
+            console.log('gav!')
+        }
+    }
+    const animal = new Animal('Bull', 4, true)
+    console.log(animal) //age: 4
+                       //hasTail: true
+                      //name: "Bull"
+    console.log(Animal.type)   // ANIMAL
+
+    class Cat extends Animal{
+        static type = 'Catyara'
+        constructor(name, age, hasTail, color) {
+            super(name, age, hasTail);
+            this.color = color;
+        }
+        voice() {
+            super.voice();
+            console.log('Im a catyara ')
+        }
+        get ageInfo() {
+            return this.age*7
+        }
+        set ageInfo(newAge) {
+            this.age = newAge
+        }
+    }
+    const cat = new Cat('dug', 3, true, 'green')
+    console.log(cat)  // Cat {name: 'dug', age: 3, hasTail: true,  color: 'green'}
+    console.log(cat.voice())  // gav!
+    console.log(Cat.type)    // Catyara
+    console.log(cat.voice()) // gav!
+                            // Im a catyara
+    console.log(cat.ageInfo) // 21
+    console.log(cat.ageInfo = 23) // 23
+    console.log(cat.ageInfo) // 161
+
+    //////////////////////////////////////////
+
+    class Component {
+        constructor(selector) {
+            this.$el = document.querySelector(selector)
+        }
+        hide() {
+            this.$el.style.display = 'none'
+        }
+        show() {
+            this.$el.style.display = 'block'
+        }
+    }
+    class Box extends Component {
+        constructor(options) {
+            super(options.selector);
+
+            this.$el.style.width = this.$el.style.height = options.size + 'px'
+            this.$el.style.background = options.color
+        }
+    }
+    const box1 = new Box({
+        selector: '#box1',
+        size: 100,
+        color: 'red'
+    })
+    box1.hide()
+    box1.show()
+
+    class Circle extends Box {
+        constructor(options) {
+            super(options);
+
+            this.$el.style.borderRadius = '45%'
+        }
+    }
+    let c = new Circle({
+        selector: '#circle',
+        size: 90,
+        color: 'green'
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    class Student{
+        constructor(name, age) {
+            this.name = name;
+            this.age = age
+        }
+        greet(n) {
+            console.log(`hi ${this.name} ${this.age*n}`)
+        }
+    }
+
+    class ProtoStudent {
+        university = 'Oxford'
+    }
+    const student = Reflect.construct(Student, ['Igor'])
+    console.log(student)
+    // console.log(student.__proto__ === ProtoStudent.prototype) // true
+
+    Reflect.apply(student.greet, {name: 'Tester', age: 23}, [2])
+    console.log(Reflect.ownKeys(student))
+    student.age = 34
+
+    Reflect.preventExtensions(student) // prohibits the expansion of the object
+    console.log(Reflect.isExtensible(student)) // true
+    student.city = 'Paris'
+    console.log(student)
+</script>
+</body>
+</html>

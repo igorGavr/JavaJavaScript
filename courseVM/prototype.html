@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    const person = new Object({
+        name: 'Darel',
+        age: 12,
+        greet: function () {
+            console.log('Hi')
+        }
+    })
+
+    Object.prototype.sayHello = function () {
+        console.log('Hello')
+    }
+
+    person.sayHello()
+
+    const lena = Object.create(person)
+    console.log(lena.name) // Darel
+    lena.name = 'Elena'
+
+
+    const str = new String('I am a string')
+    console.log(str.sayHello())  // Hello
+
+
+    const array = [1, 2, 3, 4, 5]
+
+    // function multBy(arr, n) {
+    //     return arr.map(function (i) {
+    //         return i*n
+    //     })
+    // }
+    // console.log(multBy(array, 3))
+
+    Array.prototype.multBy = function (n) {
+        return this.map(function (i) {
+            return i*n
+        })
+    }
+    console.log(array.multBy(23))
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="progress"></div>
+
+<script>
+
+    // console.log('1')
+    // window.setTimeout(function () {
+    //     console.log('2  After 2 sec')
+    // }, 2000)
+    // console.log('3')
+
+    /////////////////////////////////////////
+    // Питання на співбесіді - setTimeout 0
+    console.log('Start')
+
+    setTimeout(function () {
+        console.log('Inside setTimeout')
+    }, 0)
+
+    console.log('End')
+
+    //////////////////////////////////////////
+    // let i = 0;
+    // let start = Date.now();
+    //
+    // function count() {
+    //     for (let j = 0; j < 1e6; j++) {  // делаем тяжёлую работу
+    //         i++;
+    //         if (i%10 === 0) {
+    //             console.log(`I love U ${i}`)
+    //         }
+    //     }
+    //     alert("Done in " + (Date.now() - start) + 'ms');
+    // }
+    // count();
+
+    ///////////////////////////////////
+
+    // let i = 0;
+    //
+    // let start = Date.now();
+    // //     Первое выполнение производит счёт: i=1…1000000.
+    // //     Второе выполнение производит счёт: i=1000001…2000000.
+    // // …и так далее.
+    // function count() {
+    //
+    //     // делаем часть тяжёлой работы (*)
+    //     do {
+    //         i++;
+    //     } while (i % 1e6 !== 0);
+    //     console.log(i)
+    //     if (i === 1e9) {
+    //         alert("Done in " + (Date.now() - start) + 'ms');
+    //     } else {
+    //         setTimeout(count); // планируем новый вызов (**)
+    //     }
+    // }
+    // count();
+
+    ////////////////////////////////////
+    // Если мы разобьём тяжёлую задачу на части, используя setTimeout,
+    // то изменения индикатора будут отрисованы в промежутках между частями.
+    // let i2 = 0;
+    // let start = Date.now()
+    // function count2() {
+    //     // сделать часть крупной задачи (*)
+    //     let timeSpent = start - Date.now()
+    //     do {
+    //         i2++;
+    //         progress.innerHTML = i2;
+    //         console.log(`${timeSpent} - ${i2}`)
+    //     } while (i2 % 1e2 !== 0);
+    //     if (i2 < 1e4) {
+    //         setTimeout(count2);
+    //     }
+    // }
+    // count2();
+    // alert(Date.now() - start)
+    ////////////////////////////////////////////
+
+    // Если вы запустите этот код, то легко заметите, что он требует
+    // значительно меньше времени.
+    //Почему?
+    //
+    //     Всё просто: как вы помните, в браузере есть минимальная
+    //     задержка в 4 миллисекунды при множестве вложенных вызовов
+    //     setTimeout. Даже если мы указываем задержку 0, на самом
+    //     деле она будет равна 4 мс (или чуть больше).
+    //     Поэтому чем раньше мы запланируем выполнение – тем
+    //     быстрее выполнится код.
+    //     Итак, мы разбили ресурсоёмкую задачу на части – теперь
+    //     она не блокирует пользовательский интерфейс, причём почти
+    //     без потерь в общем времени выполнения.
+    // let i = 0;
+    //
+    // let start = Date.now();
+    //
+    // function count() {
+    //     // перенесём планирование очередного вызова в начало
+    //     if (i < 1e9 - 1e6) {
+    //         setTimeout(count); // запланировать новый вызов
+    //     }
+    //     do {
+    //         i++;
+    //     } while (i % 1e6 !== 0);
+    //     if (i === 1e9) {
+    //         alert("Done in " + (Date.now() - start) + 'ms');
+    //     }
+    // }
+    // count();
+
+    ///////////////////////////////////////////////
+
+    setTimeout(() => alert("timeout"));
+
+    Promise.resolve()
+        .then(() => alert("promise"));
+
+    alert("code");
+
+    ///////////////////////////////////////
+
+    setTimeout(function timeout() {
+        console.log('Таймаут');
+    }, 0);
+
+    let p = new Promise(function(resolve, reject) {
+        console.log('Создание промиса');
+        resolve();
+    });
+
+    p.then(function(){
+        console.log('Обработка промиса');
+    });
+
+    console.log('Конец скрипта');
+
+</script>
+</body>
+</html>

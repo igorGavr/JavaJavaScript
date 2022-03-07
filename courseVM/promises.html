@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    // let promise = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve('Success')
+    //     },509)
+    // });
+    //
+    // promise.then(data => console.log(data))  // the code is executed in 509 ms
+    //
+    // const delay = ms => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => resolve(`Done! ${ms} ms`), ms)
+    //     });
+    // }
+    // delay(1000)
+    //     .then(data => delay(500))
+    //     .then(data => console.log(data))
+    //
+    //
+    // const delay2 = ms => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => reject(`Done! ${ms} ms`), ms)
+    //     });
+    // }
+    // delay2(1000)
+    //     .then(data => delay2(500))
+    //     .then(data => console.log(data))
+    //     .catch(error => console.log(error))
+    //     .finally(() => console.log('Finally'))
+
+    //////////////////////////////////////////////////////////////
+
+    console.log('Request data...')
+
+    // setTimeout(() => {
+    //     console.log('Preparing data...')
+    //     const backendData = {
+    //         server: 'aws',
+    //         port: 2000,
+    //         status: 'working'
+    //     }
+    //     setTimeout(() => {
+    //         backendData.modified = true
+    //         console.log('Data received', backendData)
+    //     }, 2000)
+    // }, 2000)
+
+    let p = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            console.log('Preparing data...')
+            const backendData = {
+                server: 'aws',
+                port: 2000,
+                status: 'working'
+            }
+            resolve(backendData)
+        }, 2000)
+    })
+    p.then(data => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                data.modified = true
+                resolve(data)
+            }, 2000)
+        })
+    })
+        .then(clientData => {
+        clientData.fromPromise = true
+        return clientData
+    })
+        .then(data => {
+        console.log('Modified', data)
+    })
+        .catch(err => console.error('Errrrorushche: ', err))
+        .finally(() => console.log('finally'))
+
+///////////////////////////////////////////////
+
+    const sleep = ms => {
+        return new Promise(resolve => {
+            setTimeout(() => resolve(), ms)
+        })
+    }
+    sleep(2000).then(() => console.log('After 2 sec'))
+
+    // Цей метод чекає поки виконаються всі проміси
+    Promise.all([sleep(1000), sleep(2000)])
+        .then(() => {
+        console.log('All Promises')
+    })
+
+    Promise.race([sleep(1000), sleep(2000)])
+        .then(() => {
+            console.log('Race Promises')
+        })
+</script>
+</body>
+</html>

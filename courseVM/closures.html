@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+  function createCalcFunction(n) {
+      return function () {
+          console.log(1000*n)
+      }
+  }
+
+  console.log(createCalcFunction(12));//ƒ () {
+                                     //     console.log(1000*n)
+                                    // }
+  let calc = createCalcFunction(12)
+  calc()  // 12000
+
+  ////////////////////////////////////////////////
+
+  function createIncrementor(n) {
+      return function (num) {
+          return n + num
+      }
+  }
+
+  const addOne = createIncrementor(1)
+  const addTen = createIncrementor(10)
+
+  console.log(addOne)// ƒ (num) {
+                    //     return n + num
+                   // }
+  console.log(addOne(10)) // 11
+  console.log(addOne(41)) // 42
+
+  console.log(addTen(10))  // 20
+  console.log(addTen(41)) // 51
+
+  /////////////////////////////////////////////////
+
+  function urlGenerator(domain) {
+      return function (url) {
+          return `https://${url}.${domain}`
+      }
+  }
+
+  const comUrl = urlGenerator('com')
+  console.log(comUrl('google')) // https://google.com
+
+  ////////////////////////////////////////////////
+  // Задача на Співбесіді
+
+  // Написати свою Функцію bind
+  // Приклад роботи :
+  //
+  // function logPerson() {
+  //     console.log(`Person: ${this.name}, ${this.age}, ${this.job}`)
+  // }
+  // let person1 = {name: 'Piter', age: 12, job: 'QA'}
+  // let person2 = {name: 'Emili', age: 23, job: 'OF'}
+  //
+  // bind(person1, logPerson)
+  // bind(person2, logPerson)
+
+  function bind(context, fn) {
+      return function (...args) {
+          fn.apply(context, args)
+      }
+  }
+  function logPerson() {
+      console.log(`Person: ${this.name}, ${this.age}, ${this.job}`)
+  }
+  let person1 = {name: 'Piter', age: 12, job: 'QA'}
+  let person2 = {name: 'Emili', age: 23, job: 'OF'}
+  let person3 = {name: 'li'}
+
+  bind(person1, logPerson)() // Person: Piter, 12, QA
+  bind(person2, logPerson)()
+  bind(person3, logPerson)()
+
+</script>
+</body>
+</html>

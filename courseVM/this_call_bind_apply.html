@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    function hello() {
+        console.log('Hello', this)
+    }
+    hello()
+
+    const person = {
+        name: 'Milan',
+        age: 12,
+        sayHello: hello,
+        sayHelloWindow: hello,
+        sayHelloWindow2: hello.bind(window), // звязуємо контекст
+        logInfo: function (job, phone) {
+            console.group(`${this.name} info:`)
+            console.log(`Name - ${this.name}`) // Name - Milan
+            console.log(`Age - ${this.age}`)  // Age - 12
+            console.log(`Job is ${job}`)
+            console.log(`Phone is ${phone}`)
+            console.groupEnd()
+        }
+    }
+
+    console.log('person.sayHello--')
+    console.log(person.sayHello())  //виведе функцію hello()
+    console.log('person.sayHelloWindow()--')
+    console.log(person.sayHelloWindow()) //Hello
+         // {name: 'Milan', age: 12, sayHello: ƒ, sayHelloWindow: ƒ}
+    console.log('console.log(person.sayHelloWindow2())--')
+    console.log(person.sayHelloWindow2())//Hello
+    // Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+    console.log('person.logInfo()--')
+    console.log(person.logInfo())
+
+    const lena = {
+        name: 'Elena',
+        age: 122
+    }
+    // Звязуємо контекст
+    person.logInfo.bind(lena)() // Name - Elena  Age - 122
+                               // Job is undefined Phone is undefined
+     const lenaInfoLog = person.logInfo.bind(lena)
+    lenaInfoLog('Tyan', '911')  // Name - Elena  Age - 122
+                               // Job is Tyan Phone is 911
+
+    // bind  call  apply
+    person.logInfo.bind(lena, 'Smith', '102')() // повертає нову функцію
+    // і ми її визиваємо тоді коли нам зручно
+    person.logInfo.call(lena, 'Mis', 12, 21, 12)  // визивається одразу , можемо передавати безліч аргументів
+    person.logInfo.apply(lena, ['Mis', '23']) // визивається одразу , можемо передавати лише два аргументи
+    // або аргументи функції згрупувати в масив
+</script>
+</body>
+</html>

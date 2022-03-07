@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    const person = Object.create(
+        { // prototype
+            calculateAge() {
+                console.log('Age: ', new Date().getFullYear() - this.birthYear)
+            }
+        },
+        {
+        name: {
+            value: 'Vladilen',
+            enumerable: true, // дозволяє ітерувати цей ключ // allows to iterate this key
+            writable: false,  // allows to change the value
+            configurable: true //  allows delete key
+        },
+        birthYear: {
+            value: 1993
+        },
+        age: {
+            get() {
+                return new Date().getFullYear() - this.birthYear
+            },
+            set(value) {
+                document.body.style.backgroundColor = 'green'
+                console.log('Set age - ', value)
+            }
+        }
+    })
+    console.log(person)
+
+    person.name = 'Maxim'
+    console.log(person.name) // Vladilen
+    delete person.name // true
+    console.log(person) // {birthYear: 1993}
+
+    for (const personKey in person) {
+        if (person.hasOwnProperty(personKey)) { // such methods allows dont iterate on proto
+            console.log('Key -', personKey, person[personKey]) // ключі не ітеруються
+        }                              // Key - name Vladilen
+
+    }
+
+    console.log(person.age) // 29
+    console.log(person.age = 100) // Set age - 100
+                                 // 100
+    console.log(person.calculateAge()) // Age:  29
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  const validator = {
+      get(target, prop) {
+          return prop in target ? target[prop] : `There is no field ${prop} in the object`
+      },
+      set(target, prop, value) {
+          if (value.length > 2) {
+              Reflect.set(target , prop, value)
+          } else {
+              console.log('Length of value must be > 2 symbols. Now ' + value.length)
+          }
+      }
+  }
+
+  const form = {
+      login: 'tester',
+      password: '12345'
+  }
+  //                         target  traps
+  const formProxy = new Proxy(form, validator)
+
+  console.log(formProxy.login)
+  console.log(formProxy.password)
+  console.log(formProxy.username)
+
+  formProxy.password = '12' // цей пароль нам не підходить
+  console.log(formProxy.password) // лишається минулий пароль
+
+  /////////////////////////////////////
+
+  function log(message) {
+      console.log('[Log]: ', message)
+  }
+
+  const proxy = new Proxy(log, {
+      apply(target, thisArg, argArray) {
+          if (argArray.length === 1) {
+              Reflect.apply(target, thisArg, argArray)
+          } else {
+              console.log('The number of arguments does not match ')
+          }
+      }
+  })
+  proxy('Custom proxy')
+  proxy('Message', 2)
+  proxy()
+</script>
+</body>
+</html>
