@@ -1,0 +1,13 @@
+.user {
+    display: flex;
+    margin: 20px;
+}
+.content{
+    min-width: 200px;
+    background-color: #e4ffe5;
+}
+
+button {
+    margin-left: 20px;
+    border-radius: 12px;
+}
