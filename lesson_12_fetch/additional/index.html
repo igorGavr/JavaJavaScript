@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            padding: 30px;
+            width: 1200px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .divUser{
+            /*border: 1px solid greenyellow;*/
+            width: 240px;
+            /*height: 320px;*/
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid darkgrey;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        .divUser:hover{
+            background: #fcf3f3;
+            transition: .3s;
+            transform: rotateY(7grad);
+        }
+        .divUser h3{
+            margin: 0;
+        }
+        .buttonPost, .buttonComment{
+            margin: 14px;
+        }
+        .divPost {
+            width: 200px;
+            /*height: 340px;*/
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid rgba(169, 169, 169, 0.75);
+            background-color: #e4ffe5;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
+        }
+        .divPost:hover{
+            transition: .3s;
+            transform: rotateY(-7grad);
+        }
+        .cardComments{
+            width: 200px;
+            height: 340px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid darkgrey;
+            background-color: #eed6b5;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
+        }
+        .cardComments:hover{
+            transition: .3s;
+            transform: rotateY(-7grad);
+        }
+
+    </style>
+</head>
+<body>
+
+
+<script>
+    // Отримати відповідь з цього ресурсу відповідь, та вивести в документ
+    // як в прикладі на занятті
+    // https://jsonplaceholder.typicode.com/users
+    //     кожному елементу юзера створити кнопку, при клику на яку в
+    //     окремий блок виводяться всі пости поточного юзера.
+    //     Кожному елементу post створити кнопку, при клику на яку в
+    //     окремий блок виводяться всі коментарі поточного поста
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(users => {
+                    let wrapper = document.createElement('div');
+                    wrapper.classList.add('wrapper');
+                    for (const user of users) {
+                        let divUser = document.createElement('div');
+                        divUser.classList.add('divUser');
+                        divUser.innerHTML = `
+                            <h1>ID: ${user.id}</h1>
+                            <h3>Name: ${user.name}</h3>
+                            <h3>Username: ${user.username}</h3>
+                            <h2>Address</h2>
+                            <h3>Stret: ${user.address.street}</h3>
+                            <h3>Suite: ${user.address.suite}</h3>
+                            <h3>City: ${user.address.city}</h3>
+                            <h3>Zipcode: ${user.address.zipcode}</h3>
+                            <h2>Geo</h2>
+                            <h3>Lat: ${user.address.geo.lat}</h3>
+                            <h3>Lng: ${user.address.geo.lng}</h3>
+                            <h3>Phone: ${user.phone}</h3>
+                            <h3>Website: ${user.website}</h3>
+                            <h2>Company</h2>
+                            <h3>Name company: ${user.company.name}</h3>
+                            <h3>CatchPhrase company: ${user.company.catchPhrase}</h3>
+                            <h3>Bs company: ${user.company.bs}</h3>`;
+                        let buttonPost = document.createElement('button');
+                        buttonPost.className = 'buttonPost'
+                        buttonPost.innerText = 'Get posts';
+                        buttonPost.onclick = (id) => {
+                            fetch('https://jsonplaceholder.typicode.com/users/' + user.id + '/posts')
+                                .then(response => response.json())
+                                .then(posts => {
+                                    for (const post of posts) {
+                                        if (user.id === post.userId) {
+                                            let divPost = document.createElement('div')
+                                            divPost.className = 'divPost'
+                                            divPost.innerHTML = `
+                                                <h2>User Id: ${post.userId}</h2>
+                                                <h3>Id: ${post.id}</h3>
+                                                <p class="title">${post.title}</p>
+                                                <p class="body">${post.body}</p>`
+                                            let buttonComment = document.createElement('button')
+                                            buttonComment.className = 'buttonComment'
+                                            buttonComment.innerText = 'Get comments'
+                                            buttonComment.onclick = (id) => {
+                                                fetch('https://jsonplaceholder.typicode.com/posts/' + post.id + '/comments')
+                                                    .then(response => response.json())
+                                                    .then(comments => {
+                                                        for (const comment of comments) {
+                                                            if (post.id === comment.postId) {
+                                                                let divCardComments = document.createElement('div')
+                                                                divCardComments.className = 'cardComments'
+                                                                divCardComments.innerHTML = `
+                                                                    <h2>Post Id: ${comment.postId}</h2>
+                                                                    <h3>ID: ${comment.id}</h3>
+                                                                    <h4>Name: ${comment.name}</h4>
+                                                                    <h5>Email: ${comment.email}</h5>
+                                                                    <h6>Body: ${comment.body}</h6>`
+                                                                divPost.append(divCardComments)
+                                                            }
+                                                            buttonComment.disabled = true
+                                                        }
+                                                    })
+                                            }
+                                            divPost.append(buttonComment)
+                                            divUser.append(divPost)
+                                        }
+                                        buttonPost.disabled = true
+                                    }
+                                })
+
+                        }
+                        divUser.append(buttonPost)
+                        wrapper.append(divUser);
+                        document.body.appendChild(wrapper);
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
