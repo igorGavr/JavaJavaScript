@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding: 30px;
+            max-width: 1200px;
+        }
+        #post{
+            margin: 30px;
+            background-color: #edff9e;
+            padding: 23px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #post p{
+            font-size: 23px;
+        }
+        .divPost{
+            width: 88%;
+            background-color: #c5b4ff;
+            border-radius: 23px;
+            padding: 23px;
+        }
+        .buttonComment{
+            margin-top: 12px;
+            width: 89%;
+            height: 34px;
+        }
+        #comments{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+        }
+        .comment{
+            width: 260px;
+            background-color: #9fbbff;
+            margin: 23px;
+            padding: 12px;
+        }
+        h2, h3, h4{
+            font-size: 23px;
+        }
+        h5{
+            width: 90%;
+            font-size: 23px;
+        }
+        p{
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="post"></div>
+
+<div id="comments"></div>
+
+<script>
+    // На странице post-details.html:
+    // 7 Вывести всю, без исключения, информацию про объект post на кнопку/ссылку
+    // которого был совершен клик ранее.
+    // 8 Ниже информации про пост, вывести все комментарии текущего поста
+    // (эндпоинт для получения информации -
+    // https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
+    let url = new URL(location.href)
+    let postJSON = url.searchParams.get('details')
+    let post = JSON.parse(postJSON)
+
+    console.log(post)
+    let postTag = document.getElementById('post')
+    let commentsTag = document.getElementById('comments')
+    let divPost = document.createElement('div')
+    divPost.className = 'divPost'
+    divPost.innerHTML = `
+                         <h2>User Id: ${post.userId}</h2>
+                         <h3>Id: ${post.id}</h3>
+                         <p class="title">${post.title}</p>
+                         <p class="body">${post.body}</p> `
+    postTag.append(divPost)
+
+    let buttonComment = document.createElement('button')
+    buttonComment.className = 'buttonComment'
+    buttonComment.innerText = 'Get comments'
+    postTag.append(buttonComment)
+    buttonComment.onclick = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + post.id + '/comments')
+            .then(response => response.json())
+            .then(comments => {
+                for (const comment of comments) {
+                    console.log(comment)
+                    let commentDiv = document.createElement('div')
+                    commentDiv.className = 'comment'
+                    commentDiv.innerHTML = `
+                                <h2>Post Id: ${comment.postId}</h2>
+                                <h3>ID: ${comment.id}</h3>
+                                <h4>Name: ${comment.name}</h4>
+                                <h5>Email: ${comment.email}</h5>
+                                <p>Body: ${comment.body}</p>`
+                    commentsTag.append(commentDiv)
+                    buttonComment.disabled = true
+                }
+            })
+    }
+
+
+</script>
+</body>
+</html>

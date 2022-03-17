@@ -4,54 +4,73 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .popup{
-            width: 122px;
-            height: 122px;
-            background-color: aliceblue;
-            position: absolute;
-            top: 12px;
-            left: 23px;
+
+        #wrapper{
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .user{
+            height: 180px;
+            width: 40%;
+            background-color: #8398ff;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 23px;
+            padding: 20px;
+            margin: 12px;
+        }
+        .div1{
+            width: 94px;
+            background-color: #ffbb85;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 23px;
+            align-items: center;
         }
     </style>
 </head>
 <body>
-<form>
-    <input type="text">
-    <button>send</button>
-</form>
 
+<div id="wrapper"></div>
 
 
 <script>
-    console.log();
-    let form = document.forms[0];
-    form.onsubmit = function (e){
-        e.preventDefault();
-        let textFromInput = e.target[0].value;
-        console.log(textFromInput);
-        if (textFromInput.includes('fuck')){
-            //todo create popup
-            let div = document.createElement('div');
-            document.body.append(div);
-            div.classList.add('popup');
-            div.innerText = 'bad boy';
-
-        }
-    }
+    // В index.html
+    // 1 получить массив объектов user с
+    // endpoint`а https://jsonplaceholder.typicode.com/users
+    // 2 Вывести id,name всех user в index.html. Отдельный блок
+    // для каждого user.
+    // 3 Добавить каждому блоку кнопку/ссылку , при клике на
+    // которую происходит переход
+    // на страницу user-details.html, которая имеет детальную
+    // информацию про объект на
+    // который кликнули
 
 
-
-
-
-
+    let wrapper = document.getElementById('wrapper')
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(value => value.json())
         .then(value => {
             console.log(value);
             for (const user of value){
-                let li = document.createElement('li');
-                li.innerText = `${user.name}`;
-                document.body.append(li);
+                let userDiv = document.createElement('div');
+                userDiv.className = 'user'
+                userDiv.innerHTML = `
+                                <h2>${user.id}</h2>
+                                <h2>${user.name}</h2>
+                                 `;
+                let div1 = document.createElement('div')
+                div1.className = 'div1'
+
+                let anchor = document.createElement('a')
+                anchor.href = `user-details.html?details=${JSON.stringify(user)}`
+                anchor.innerText = 'info'
+
+                div1.append(anchor)
+                userDiv.append(div1)
+                wrapper.append(userDiv)
             }
         });
 </script>
