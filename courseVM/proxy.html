@@ -8,6 +8,51 @@
 
 
 <script>
+  ///////////////////////////////////////////////
+  //
+  //    Functions
+  //
+  /////////////////////////////////////
+
+  function log(message) {
+      console.log('[Log]: ', message)
+  }
+
+  const proxy = new Proxy(log, {
+      apply(target, thisArg, argArray) {
+          if (argArray.length === 1) {
+              Reflect.apply(target, thisArg, argArray)
+          } else {
+              console.log('The number of arguments does not match ')
+          }
+      }
+  })
+  proxy('Custom proxy')
+  proxy('Message', 2)
+  proxy()
+
+  console.log('-----------------')
+  /////////////////////////////////////////
+
+  const logi = text => `Log: ${text}`
+
+  const fp = new Proxy(logi, {
+      apply(target, thisArg, argArray) {
+          console.log('Calling fn...')
+          return target.apply(thisArg, argArray).toUpperCase()
+      }
+  })
+  console.log(fp());         // Calling fn...
+                            // Log: undefined
+
+  console.log(fp('test'));  // Calling fn...
+                          // Log: TEST
+  console.log('-----------------')
+  /////////////////////////////////////////////
+  //
+  //   Objects
+  //
+  /////////////////////
   const validator = {
       get(target, prop) {
           return prop in target ? target[prop] : `There is no field ${prop} in the object`
@@ -37,22 +82,82 @@
 
   /////////////////////////////////////
 
-  function log(message) {
-      console.log('[Log]: ', message)
+  const user = {
+      name: 'Vasik',
+      age: 23,
+      job: 'Fullstack'
   }
-
-  const proxy = new Proxy(log, {
-      apply(target, thisArg, argArray) {
-          if (argArray.length === 1) {
-              Reflect.apply(target, thisArg, argArray)
-          } else {
-              console.log('The number of arguments does not match ')
+  let op = new Proxy(user, {
+      get(target, prop) {
+          console.log('---------------')
+          console.log('Target - ', target)
+          console.log('Prop - ', prop)
+          if (!(prop in target)) {
+              return prop
+                  .split('_')
+                  .map(p => target[p])
+                  .join(' ')
           }
+          return target[prop]
+      },
+      set(target, p, value) {
+          if (p in target) {
+              target[p] = value
+          } else {
+              throw new Error(`No ${p} field in target!`)
+          }
+      },
+      has(target, p) {
+          return ['name', 'age', 'job'].includes(p)
+      },
+      deleteProperty(target, p) {
+          console.log('Deleting...' , p)
+          delete target[p] // якщо видалення не відбувається то
+          return true     // повертається значення false
       }
   })
-  proxy('Custom proxy')
-  proxy('Message', 2)
-  proxy()
+  console.log(op)
+  console.log(op.age)  // Prop -  age  // 23
+  console.log(op.name) // Target - name // Vasik
+  //console.log(op.work = 12)  // Error
+  console.log(op.name = 'kutasik')
+  console.log('name' in op)  // true
+  console.log(delete op.age)
+  console.log(op)  // Proxy {name: 'Vasik', job: 'Fullstack'}
+
+  console.log(op.name_job)  // kutasik Fullstack
+  console.log(op.job_name_name_job)  // Fullstack kutasik kutasik Fullstack
+
+  console.log('-----------------')
+  /////////////////////////////////////////////////
+  //
+  //    CLASSES
+  //
+  ///////////////////////////////////////////
+
+  class Person {
+      constructor(name, age) {
+          this.name = name
+          this.age = age
+      }
+  }
+  const PersonProxy = new Proxy(Person, {
+      construct(target, argArray) {
+          console.log('Construct...')
+          return new Proxy(new target(...argArray), {
+              get(t, prop) {
+                  console.log(`Getting prop ${prop}`)
+                  return t[prop]
+              }
+          })
+      }
+  })
+  const person1 = new PersonProxy('Livan', 23)
+  console.log(person1)   // Proxy {name: 'Livan', age: 23}
+                        // Construct...
+  console.log(person1.name)  // Getting prop name
+                            // Livan
+
 </script>
 </body>
 </html>

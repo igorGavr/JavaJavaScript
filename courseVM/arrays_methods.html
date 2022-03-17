@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    let users = [
+        {name: 'vasya', age: 31, status: 2},
+        {name: 'petya', age: 30, status: 3},
+        {name: 'kolya', age: 29, status: 23},
+        {name: 'olya', age: 12, status: 53},
+        {name: 'max', age: 30, status: 23},
+        {name: 'anya', age: 31, status: 3},
+        {name: 'oleg', age: 28, status: 6},
+        {name: 'andrey', age: 29, status: 56},
+        {name: 'masha', age: 30, status: 43},
+        {name: 'olya', age: 31, status: 543},
+        {name: 'max', age: 31, status: 543}
+    ];
+    let nameUser = users.map((user) => {
+        return user.status
+    })
+    console.log(nameUser)
+
+    let filter = users.filter(user => {
+        if (user.status >= 12) {
+            return true
+        }
+    })
+    console.log(filter)
+
+    let adults = users.filter(user => user.age >= 18)
+    console.log(adults)
+
+
+    let res1 = users
+        .filter(user => user.status > 20)
+        .map(user => {
+            return {
+                info:`${user.name} (${user.age})`,
+                id: user.status,
+                status: user.status / 10,
+                age: user.age
+            }
+        })
+        .reduce((accum, item) => {
+            return accum + item.age
+        }, 0)
+    console.log(res1)
+
+
+    let arr = [
+        {id: 1, title: 'some text 1'},
+        {id: 2, title: 'some text 2'},
+        {id: 3, title: 'some text 3'},
+        {id: 4, title: 'some text 4'},
+    ]
+    let res = arr.map(el => {
+        return {
+            id: el.id
+        }
+    })
+    console.log(res)
+
+    const newArr = (array) => {
+        let arr2 = []
+        array.map(el => {
+            let newObj = {
+                id: el.id
+            }
+            arr2.push(newObj)
+        })
+        return arr2
+    }
+
+    console.log(newArr(arr))
+
+
+</script>
+</body>
+</html>

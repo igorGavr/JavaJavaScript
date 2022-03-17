@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function calcValues(a,b) {
+        return [
+            a + b,
+            a - b
+        ]
+    }
+    let result = calcValues(32, 212)
+    let [sum, sub] = result
+    console.log(sum, sub)
+
+    ///////////////////////////////////////////
+    // Objects
+
+    let person = {
+        name: 'Olexa',
+        age: 23,
+        address: {
+            country: 'Uta',
+            city: 'ot '
+        }
+    }
+    let {
+        name: firstName = 'lex',
+        car = 'Lada',
+        address: {city: homeTown, country}
+    } = person
+    console.log(firstName, car, homeTown, country)
+
+    function logPerson({name, age}) {
+        console.log(`${name} - ${age}`)
+    }
+    logPerson(person)
+</script>
+</body>
+</html>

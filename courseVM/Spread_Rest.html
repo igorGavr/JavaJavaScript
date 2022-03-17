@@ -5,7 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 
 <script>
 
@@ -13,6 +16,7 @@
   const citiesEurope = ['Berlin', 'Prague', 'Paris']
 
   // Spread
+  console.log(Math.max(...num))
   console.log(...num)
   console.log(...citiesEurope)
 
@@ -32,28 +36,53 @@
       {id:10,name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
       {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
   ];
+  // let newArray = usersWithAddress.map((user, index) => {
+  //     user[index][0]
+  //     return user
+  // })
+
   console.log(usersWithAddress)
+  console.log([...usersWithAddress,...num])
+  console.log([...usersWithAddress, ...citiesEurope])
 
-  let reduce = usersWithAddress.reduce((busket, item) => {
-      busket.push(item.id)
-  }, {})
+  let numObj = [
+      {0: 1},
+      {1: 1},
+      {2: 2},
+      {3: 3},
+      {4: 5},
+      {5: 8}]
 
-  let usersId = usersWithAddress.map(user => {
-      let array = {
-          iD: user.id
-      }
-      return array
-  })
-  console.log(usersId)
-  let numObj = {
-      0: 1,
-      1: 1,
-      2: 2,
-      3: 3,
-      4: 5,
-      5: 8
+  console.log([...usersWithAddress, ...numObj])
+
+  const divs = document.querySelectorAll('div')
+  const nodes = [...divs]
+  console.log(nodes)
+
+  /////////////////////////////////////////////////////
+  //
+  //         REST
+
+  function sum(a, b, ...rest) {
+      return a+b+rest.reduce((a, i) => a + i, 0)
   }
-  console.log({...usersId, ...numObj})
+  const numbers = [1, 2, 3, 4, 5]
+  console.log(sum(...numbers))
+
+  const [a, b, ...other] = numbers
+  console.log(a, b, other)
+
+  const person = {
+      name: 'Max',
+      age: 20,
+      city: 'Jeneva',
+      country: 'Swetherland'
+  }
+  let  {name, age, ...address} = person
+  console.log(name, age, address)
+
+  let [user1, ...other1] = usersWithAddress
+  console.log(user1, other1)
 
 </script>
 </body>
