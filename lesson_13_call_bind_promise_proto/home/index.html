@@ -172,10 +172,22 @@
                     console.log(value)
                     console.log('-hallelujah I\'m at work')
                     value++
+                    if (value>9) {
+                        reject('Too much value')
+                    }
                     resolve(value)
                 }, 2000)
             })
-    })
+        })
+        .then(value => {
+            return new Promise(((resolve, reject) => {
+                setTimeout(() => reject(`Done!`),1000)
+            }))
+        })
+        .catch(err => console.error('Errrrorushche: ', err))
+        .finally(() => console.log('finally'))
+
+
 </script>
 </body>
 </html>
