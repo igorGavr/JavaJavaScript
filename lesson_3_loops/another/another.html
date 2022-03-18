@@ -6,6 +6,28 @@
 </head>
 <body>
 
+<table id="table"></table>
+
 <script src="main.js"></script>
+<script>
+
+    let table = document.getElementById('table')
+    let rows = +prompt('rows?')
+    let cells = +prompt('cells')
+
+    for (let j = 0; j < rows; j++) {
+        let tr = document.createElement('tr')
+        for (let k = 0; k < cells; k++) {
+            let td = document.createElement('td')
+            td.innerText = `cell ${j} ${k}`
+            td.style.backgroundColor = 'green'
+            td.style.margin = '2px'
+            tr.append(td)
+        }
+        table.append(tr)
+
+    }
+
+</script>
 </body>
 </html>

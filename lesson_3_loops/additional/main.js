@@ -736,3 +736,5 @@ for (const str of newList10) {
     // newList11.push(str)            // чому так не працює???
 }
 console.log(newList11+'    forof')
+
+//////////////////////////////////////
