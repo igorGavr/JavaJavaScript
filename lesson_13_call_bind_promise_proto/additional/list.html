@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            max-width: 1200px;
+        }
+        img{
+            max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="products"></div>
+
+<script>
+    // створити елемент <a href='list.html'> На сторінку товарів</a>,
+    // та list.html, при переході на який відобразити
+    // на сторінці всі товари.
+    // На сторінці  list.html побудувати кнопку яка видаляє всі товари
+    // з корзини та локалстораджа.
+    //     До кожного товару додати кнопку, при кліку на яку з лс
+    //     видаляється конкретний обраний  товар
+
+
+
+    let productsKey = 'bikes'
+    let productsDiv = document.getElementById('products')
+    let products = JSON.parse(localStorage.getItem(productsKey))
+    console.log(products)
+
+    products.forEach(product => {
+        let productDiv = document.createElement('div')
+        productDiv.className = 'product'
+        productDiv.innerHTML = `
+                    <h2>${product.item}</h2>
+                    <h3>Quantity - ${product.quantity}</h3>
+                    <h3>Price - ${product.price}</h3>
+                    <img src="img/${product.img}.jpg">
+        `
+        let buttonDelItem = document.createElement('button')
+        buttonDelItem.innerText = `Delete ${product.item}`
+        buttonDelItem.onclick = function () {
+            product.style.display = 'none'
+        }
+
+        productDiv.append(buttonDelItem)
+        productsDiv.append(productDiv)
+    })
+
+    let buttonDelAll = document.createElement('button')
+    buttonDelAll.innerText = 'Delete all products'
+    productsDiv.append(buttonDelAll)
+    buttonDelAll.onclick = function () {
+        localStorage.clear()
+        products.forEach(product => {
+            product.style.display = 'none'
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

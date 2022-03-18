@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            margin: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<form  name="bike">
+    <label>Product:
+        <input name="product" type="text"/>
+    </label>
+    <br>
+    <label>Quantity:
+        <input name="quantity" type="number"/>
+    </label>
+    <br>
+    <label>Price:
+        <input name="price" type="number"/>
+    </label>
+    <br>
+    <label>Img:
+        <input name="url" type="text"/>
+    </label>
+    <button id="btnCar">Send</button>
+</form>
+
+
+
+<script>
+
+    let productsArray = JSON.parse(localStorage.getItem('bikes')) || []
+
+    document.forms.bike.onsubmit = function (e) {
+        e.preventDefault()
+        let item = this.product.value
+        let quantity = this.quantity.value
+        let price = this.price.value
+        let img = this.url.value
+        let bike = {item, quantity, price, img}
+        productsArray.push(bike)
+        localStorage.setItem('bikes', JSON.stringify(productsArray))
+    }
+    let anchor = document.createElement('a')
+    anchor.href = `list.html?details=${JSON.stringify(productsArray)}`
+    anchor.innerText = 'На сторінку товарів'
+
+    document.body.append(anchor)
+    // - Імітуємо наповнення інтернет магазину товарами :
+    //     Створити форму з наступними полями :
+    //     - назва товару
+    // - кількість товару
+    // - ціна товару
+    // - картинка товару (посилання з інтернету)
+    // Зберігати товари в масив в локалсорадж. При збережені товару з форми,
+    // action не повинно відбуватись (preventDefault)
+    // створити елемент <a href='list.html'> На сторінку товарів</a>,
+    // та list.html, при переході на який відобразити на сторінці всі товари.
+    // На сторінці  list.html побудувати кнопку яка видаляє всі товари
+    // з корзини та локалстораджа.
+    //     До кожного товару додати кнопку, при кліку на яку з лс
+    //     видаляється конкретний обраний  товар
+
+
+
+</script>
+</body>
+</html>

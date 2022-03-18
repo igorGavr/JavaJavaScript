@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let user1 = {
+        name: 'vasya',
+        greeting: function (msg) {
+            console.log(`${msg} hello im ${this.name}`)
+        },
+        whoIsWho: function (a, b, c) {
+            console.log(this, a, b, c)
+        }
+    }
+    let user2 = {
+        name: 'kokos'
+    }
+    user1.greeting.call(user2, 'hi')
+    let args = [1, 23, 3]
+    user1.whoIsWho.apply(user2, args)
+
+    let greeting = user1.greeting.bind(user2, 'aloha') //ми створили клона
+    // який повторює функціонал
+    greeting()
+
+
+
+    function User(name, age, status, name2, age2, status2, address2, zip2) {
+        this.name = name
+        this.age = age
+        this.status = status
+        this.name2 = name2
+        this.age2 = age2
+        this.status2 = status2
+        this.address2 = address2
+        this.zip2 = zip2
+    }
+    function Customer(name, age, status,  name2, age2, status2, address2, zip2, address, zip, value) {
+        User.apply(this, arguments)
+        this.address = address
+        this.zip = zip
+        this.value = value
+    }
+    let customer = new Customer('Bob', 23, true, 'Paris', 121212, 'good value')
+    let customer2 = new Customer('Dilan', 12, false, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    console.log(customer)
+    console.log(customer2)
+
+    ///////////////////////////////////////////////
+    //
+    //   PROTOTYPE
+    //
+    let nums = [1, 2, 3]
+    Array.prototype.print = function () {
+        for (const x of this) {
+            console.log(x)
+        }
+    }
+    nums.print()
+
+    ///////////////////////////////////////////////
+
+    new Promise(((resolve, reject) => {
+        let counter = 0
+        setTimeout(() => {
+            console.log('asynk operation', counter)
+            counter++
+            resolve(counter)
+        }, 1000)
+    }))
+        .then((value => {
+            return new Promise(((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('asynk operation', value)
+                    value++
+                    resolve(value)
+                }, 1000)
+            }))
+        }))
+        .then((value => {
+            return new Promise(((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('END', value)
+                    value++
+                    if (value>1) {
+                        reject('Too much value')
+                    }
+                    resolve(value)
+                }, 1000)
+            }))
+        }))
+        .catch(reason => console.log(reason))
+
+    function timeOutFunk(counter, milis) {
+        return new Promise(((resolve, reject) => {
+            setTimeout(() => {
+                counter++
+                resolve(counter)
+            }, milis)
+        }))
+    }
+    timeOutFunk(0, 2000)
+        .then(value => {
+            return timeOutFunk(value, 3000)
+        })
+        .then(value => {
+            return timeOutFunk(value, 2000)
+        })
+
+    //////////////////////////////////////////////////////////
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => {
+            return new Promise(((resolve, reject) => {
+                let data = response.body.getReader().read()
+                data.then(value => console.log(value.value))
+            }))
+        })
+</script>
+</body>
+</html>
