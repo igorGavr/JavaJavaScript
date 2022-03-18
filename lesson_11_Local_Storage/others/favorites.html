@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    for (const course of favorites) {
+        let courseDiv = document.createElement('div')
+        courseDiv.innerHTML = `${course.title}
+                        ${course.monthDuration}
+                        ${course.hourDuration}`
+        document.body.append(courseDiv)
+    }
+
+</script>
+</body>
+</html>

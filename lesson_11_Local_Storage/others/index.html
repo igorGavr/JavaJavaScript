@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        img{
+            width: 45px;
+        }
+    </style>
 </head>
 <body>
+<button onclick="(function (){
+    location.href = 'https://owu.com.ua'
+}())">go to Okten</button>
 
+<form name="form1">
+    <input type="text" name="name">
+    <input type="number" name="age">
+    <button>Save to Storage</button>
+</form>
+
+<form name="carForm">
+    <input type="text" name="model">
+    <input type="text" name="type">
+    <input type="number" name="volume">
+    <button>Save car    </button>
+</form>
+
+<div id="courses"></div>
+<a href="./favorites.html"> favorites page </a>
 
 <script>
 
-    location.reload()
-    history.forward()
-    history.back()
+    // location.reload()
+    // history.forward()
+    // history.back()
 
     console.log(sessionStorage);
     sessionStorage.setItem('sdf', 'sdf')
@@ -28,10 +51,260 @@
     }
     console.log(obj)
 
-    navigator.geolocation.getCurrentPosition(position => {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-    })
+    // navigator.geolocation.getCurrentPosition(position => {
+    //     console.log(position.coords.latitude)
+    //     console.log(position.coords.longitude)
+    // })
+    let siteURL = location.href
+    let url = new URL(siteURL)
+    let ijt = url.searchParams.get('_ijt')
+
+    console.log(siteURL)
+    console.log(url)
+    console.log(ijt)
+
+    console.log(window.location)
+    let user = {
+        name:'Gans',
+        age: 45,
+        alko: true
+    }
+    console.log(user)
+    let userJson = JSON.stringify(user)
+    console.log(userJson)
+
+    console.log(localStorage.key(0))
+
+    let users = [
+        {id: 1, name: 'vasya', age: 31, status: false},
+        {id: 2, name: 'petya', age: 30, status: true},
+        {id: 3, name: 'kolya', age: 29, status: true},
+        {id: 4, name: 'olya', age: 28, status: false},
+        {id: 5, name: 'max', age: 30, status: true},
+        {id: 6, name: 'anya', age: 31, status: false},
+        {id: 7, name: 'oleg', age: 28, status: false},
+        {id: 8, name: 'andrey', age: 29, status: true},
+        {id: 9, name: 'masha', age: 30, status: true},
+        {id: 10, name: 'olya', age: 31, status: false},
+        {id: 11, name: 'max', age: 31, status: true}
+    ];
+    // for (const user of users) {
+    //     localStorage.setItem(`user - ${user.id}`, JSON.stringify(user))
+    // }
+    // for (let i = 0; i < localStorage.length; i++) {
+    //     let key = localStorage.key(i)
+    //     let userJson = localStorage.getItem(key)
+    //     console.log(JSON.parse(userJson))
+    // }
+
+    localStorage.setItem('users', JSON.stringify(users))
+    let usersParse = JSON.parse(localStorage.getItem('users'))
+    console.log(usersParse)
+
+    let filter = usersParse.filter(value => value.age >= 30)
+    localStorage.setItem('users', JSON.stringify(filter))
+
+
+    ////////////////////////////////////////////
+    //
+    //     BUSKET
+    //
+    ///////////////////////////
+    let simpsons = [
+        {
+            name: 'Bart',
+            surname: 'Simpson',
+            age: 10,
+            photo: 'https://upload.wikimedia.org/wikipedia/uk/a/aa/Bart_simpson.png'
+        },
+        {
+            name: 'Homer',
+            surname: 'Simpson',
+            age: 40,
+            photo: 'http://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png'
+        },
+        {
+            name: 'Marge',
+            surname: 'Simpson',
+            age: 38,
+            photo: 'https://upload.wikimedia.org/wikipedia/ru/0/0b/Marge_Simpson.png'
+        },
+        {
+            name: 'Lisa',
+            surname: 'Simpson',
+            age: 9,
+            photo: 'https://upload.wikimedia.org/wikipedia/ru/e/ec/Lisa_Simpson.png'
+        },
+        {
+            name: 'Maggie',
+            surname: 'Simpson',
+            age: 1,
+            photo: 'https://upload.wikimedia.org/wikipedia/ru/9/9d/Maggie_Simpson.png'
+        },
+    ];
+    for (const simpson of simpsons) {
+        let divSimpson = document.createElement('div')
+        divSimpson.innerText = `${simpson.name} ${simpson.age} ${simpson.surname}`
+        let imgSimpson = document.createElement('img')
+        imgSimpson.src = simpson.photo
+        let addToButton = document.createElement('button')
+        addToButton.innerText = 'add'
+        divSimpson.append(addToButton, imgSimpson)
+        addToButton.onclick = function () {
+            let simpsons = localStorage.getItem('simpsons')
+            if (!simpsons) {
+                simpsons = []
+                simpsons.push(simpson)
+                let stringifySimps = JSON.stringify(simpsons)
+                localStorage.setItem('simpsons', stringifySimps)
+            }else {
+                let realArrayOfSimpsObject = JSON.parse(simpsons)
+                realArrayOfSimpsObject.push(simpson)
+                localStorage.setItem('simpsons', JSON.stringify(realArrayOfSimpsObject))
+            }
+        }
+        document.body.append(divSimpson)
+    }
+
+    ///////////////////////////////////////////////////////
+
+    let simp = [...simpsons]
+    console.log(simp)
+    for (const simpElement of simp) {
+        let divSimp = document.createElement('div')
+        divSimp.innerText = `${simpElement.name}   ${simpElement.surname}
+         `
+        let anchor = document.createElement('a')
+        anchor.href = `simpsDetail.html?details=${JSON.stringify(simpElement)}`
+        anchor.innerText = 'info'
+        divSimp.append(anchor)
+
+        document.body.append(divSimp)
+    }
+///////////////////////////////////////////////////////
+
+    // let form1 = document.forms.form1
+    // form1.onsubmit = function (e) {
+    //     e.preventDefault()
+    //     // e.target.name
+    //     // form1.name
+    //     let nameInput = this.name;
+    //     let ageInput = this.age;
+    //     // let user = {nameInput: nameInput, ageInput: ageInput}
+    //     let user = {nameInput, ageInput}
+    //     localStorage.setItem(nameInput, JSON.stringify(user))
+    // }
+
+    let form1 = document.forms.form1
+    form1.onsubmit = function (e) {
+        e.preventDefault()
+        localStorage.setItem('Input', JSON.stringify({
+            nameInput: this.name.value,
+            ageInput: this.age.value
+        }))
+    }
+
+    ///////////////////////////////////////////////////
+
+    let carsArray = JSON.parse(localStorage.getItem('cars')) || []
+
+    document.forms.carForm.onsubmit = function (e) {
+        e.preventDefault()
+        let model = this.model.value
+        let type = this.type.value
+        let volume = this.volume.value
+        let car = {model, type, volume}
+        carsArray.push(car)
+        localStorage.setItem('cars', JSON.stringify(carsArray))
+    }
+
+    /////////////////////////////////////////////////////////
+
+    let coursesArray = [
+        {
+            title: 'JavaScript Complex',
+            monthDuration: 5,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+        },
+        {
+            title: 'Java Complex',
+            monthDuration: 6,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'angular',
+                'aws',
+                'docker',
+                'git',
+                'java core',
+                'java advanced']
+        },
+        {
+            title: 'Python Complex',
+            monthDuration: 6,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'angular',
+                'aws',
+                'docker',
+                'python core',
+                'python advanced']
+        },
+        {
+            title: 'QA Complex',
+            monthDuration: 4,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+        },
+        {
+            title: 'FullStack',
+            monthDuration: 7,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'react',
+                'angular',
+                'aws',
+                'docker',
+                'git',
+                'node.js',
+                'python',
+                'java']
+        },
+        {
+            title: 'Frontend',
+            monthDuration: 4,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+        }
+    ];
+
+    let coursesBox = document.getElementById('courses')
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || []
+    for (const course of coursesArray) {
+        let courseDiv = document.createElement('div')
+        courseDiv.innerText = course.title + " - "
+        let buttonAddCourse = document.createElement('button')
+        buttonAddCourse.innerHTML = '<strong>Add to Favorites</strong>'
+        buttonAddCourse.onclick = function (e) {
+            favorites.push(course)
+            localStorage.setItem('favorites', JSON.stringify(favorites))
+        }
+        courseDiv.append(buttonAddCourse)
+        coursesBox.append(courseDiv)
+    }
+
 </script>
 </body>
 </html>

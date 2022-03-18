@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>simps details</h2>
+
+<div id="details"></div>
+
+<script>
+
+    let url = new URL(location.href)
+    let simpsJSON = url.searchParams.get('details')
+    let simpsDetails = document.getElementById('details')
+    simpsDetails.innerText = simpsJSON
+
+</script>
+</body>
+
+</html>
