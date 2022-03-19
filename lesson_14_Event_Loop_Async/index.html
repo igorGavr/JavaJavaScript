@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // let money = 0
+    // function clearHouse(isJobDone) {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (isJobDone) {
+    //                 money = 500
+    //                 resolve(money)
+    //             }else {
+    //                 reject('Eroooor')
+    //             }
+    //         }, 2000)
+    //     })
+    //
+    // }
+    //
+    // function buyJeans(money) {
+    //     return new Promise(((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (money > 200) {
+    //                 document.write('  Good, jeans are mine!  bro  ')
+    //                 money-=200
+    //                 resolve(money)
+    //             }else {
+    //                 document.write(' i dont have money  ')
+    //                 reject('NEMA')
+    //             }
+    //         }, 1000)
+    //     }))
+    //
+    // }
+    // clearHouse(true)
+    //     .then(value => {
+    //         console.log(value)
+    //         return buyJeans(value)
+    //     })
+    //     .then(value => {
+    //         console.log(value)
+    //     })
+    //     .catch(reason => {
+    //         console.error(reason)
+    //     })
+
+    ////////////////////////////////////////
+
+    let money = 0
+    function clearHouse(isJobDone) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (isJobDone) {
+                    money = 500
+                    resolve(money)
+                }else {
+                    reject('Eroooor')
+                }
+            }, 2000)
+        })
+
+    }
+
+    function buyJeans(money) {
+        return new Promise(((resolve, reject) => {
+            setTimeout(() => {
+                if (money > 200) {
+                    document.write('  Good, jeans are mine!  bro  ')
+                    money-=200
+                    resolve(money)
+                }else {
+                    document.write(' i dont have money  ')
+                    reject('NEMA')
+                }
+            }, 1000)
+        }))
+
+    }
+
+    async function houseCleaner() {
+        try {
+            let reward = await clearHouse(true)
+            console.log(reward)
+            let reshta = await buyJeans(reward)
+            console.log(reshta);
+        }catch (e) {
+            console.error(e)
+        }
+    }
+
+    houseCleaner()
+
+
+
+    ///////////////////////////////////////
+
+    let uno = new Promise((resolve => {
+        setTimeout(() => {
+            resolve(1)
+        }, 3000)
+    }))
+    let dos = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(2)
+        }, 2000)
+    })
+    let tres = new Promise(resolve => {
+        setTimeout(() => {
+            resolve(3)
+        }, 1000)
+    })
+
+    Promise.race([uno, dos, tres])
+        .then(value => {
+            console.log(value)
+        })
+
+    Promise.all([uno, dos.catch(reason => {}), tres])
+        .then(value => {
+            console.log(value)
+        })
+    Promise.allSettled([uno, dos, tres])
+        .then(value => {
+            console.log(value)
+        })
+
+    //////////////////////////////////////////
+
+    function goToTurkey(isCovidPresent, callback) {
+        setTimeout(() => {
+            if (isCovidPresent === true) {
+                callback('Covid in the country', null)
+            }else {
+                callback(null, 'Yeah I am flying ')
+            }
+        }, 4000)
+    }
+    goToTurkey(true, (err, data) => {
+        if (err) {
+            console.log(err + ' minus vocation')
+        }else {
+            console.log(data + ' to Turkey')
+        }
+    })
+
+</script>
+</body>
+</html>
