@@ -30,7 +30,7 @@
     let productsKey = 'bikes'
     let productsDiv = document.getElementById('products')
     let products = JSON.parse(localStorage.getItem(productsKey))
-    console.log(products)
+
 
     products.forEach(product => {
         let productDiv = document.createElement('div')
@@ -44,9 +44,12 @@
         let buttonDelItem = document.createElement('button')
         buttonDelItem.innerText = `Delete ${product.item}`
         buttonDelItem.onclick = function () {
-            product.style.display = 'none'
-        }
+            productDiv.innerHTML = ''
+            let delId = product.id
+            products.splice(delId, 1)
 
+            localStorage.setItem('bikes', JSON.stringify(products))
+        }
         productDiv.append(buttonDelItem)
         productsDiv.append(productDiv)
     })
@@ -56,9 +59,7 @@
     productsDiv.append(buttonDelAll)
     buttonDelAll.onclick = function () {
         localStorage.clear()
-        products.forEach(product => {
-            product.style.display = 'none'
-        })
+        productsDiv.innerHTML = ''
     }
     //////////////////////////////////////////////////////////
 

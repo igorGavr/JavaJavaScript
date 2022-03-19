@@ -37,14 +37,18 @@
     let productsArray = JSON.parse(localStorage.getItem('bikes')) || []
 
     document.forms.bike.onsubmit = function (e) {
-        e.preventDefault()
+        //e.preventDefault()
         let item = this.product.value
         let quantity = this.quantity.value
         let price = this.price.value
         let img = this.url.value
         let bike = {item, quantity, price, img}
         productsArray.push(bike)
-        localStorage.setItem('bikes', JSON.stringify(productsArray))
+        let productsWithId = productsArray.map((product, index) => {
+            product.id = index
+            return product
+        })
+        localStorage.setItem('bikes', JSON.stringify(productsWithId))
     }
     let anchor = document.createElement('a')
     anchor.href = `list.html?details=${JSON.stringify(productsArray)}`
