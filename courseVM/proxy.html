@@ -15,11 +15,13 @@
   /////////////////////////////////////
 
   function log(message) {
-      console.log('[Log]: ', message)
+      console.log(`Log : ${message}`)
   }
 
   const proxy = new Proxy(log, {
       apply(target, thisArg, argArray) {
+          console.log(target)
+          console.log(thisArg)
           if (argArray.length === 1) {
               Reflect.apply(target, thisArg, argArray)
           } else {
@@ -129,6 +131,55 @@
   console.log(op.job_name_name_job)  // Fullstack kutasik kutasik Fullstack
 
   console.log('-----------------')
+
+  /////////////////////////////////////////////////
+
+  let handler = {
+      get: function (target, name) {
+          return name in target ? target[name] : 'NEMA'
+      }
+  }
+  let nema = new Proxy({} , handler)
+  nema.a = 1
+  nema.b = null
+
+  console.log(nema.a, nema.b) // 1, null
+  console.log('c' in nema, nema.c)  // false , 'NEMA'
+
+  console.log('-----------------')
+  //////////////////////////////////////////////
+  let target1 = {}
+  let proxy1 = new Proxy(target1, {})
+  proxy1.a = 37  // операция перенаправлена прокси
+  console.log(target1.a)  // 37. Операция была успешно перенаправлена
+  console.log('-----------------')
+
+  /////////////////////////////////////////////////////
+
+  let validator2 = {
+      set: function(obj, prop, value) {
+          if (prop === 'age') {
+              if (!Number.isInteger(value)) {
+                  throw new TypeError('The age is not an integer');
+              }
+              if (value > 200) {
+                  throw new RangeError('The age seems invalid');
+              }
+          }
+          // Стандартное сохранение значения
+          obj[prop] = value;
+          // Обозначить успех
+          return true;
+      }
+  };
+  let person = new Proxy({}, validator2);
+
+  person.age = 100;
+  console.log(person.age); // 100
+  //person.age = 'young'; // Вызовет исключение
+  //person.age = 300; // Вызовет исключение
+  console.log('-----------------')
+
   /////////////////////////////////////////////////
   //
   //    CLASSES
