@@ -9,184 +9,185 @@
 
 <script>
 
-    // console.log('the beginning of my day')
-    // setTimeout(() => {
-    //     console.log('-got up')
-    //
-    //     setTimeout(() => {
-    //         console.log('-coughed')
-    //
-    //         setTimeout(() => {
-    //             console.log('-almost died')
-    //
-    //             setTimeout(() => {
-    //                 console.log('-got tired of allergies')
-    //
-    //                 setTimeout(() => {
-    //                     console.log('-went to the toilet')
-    //
-    //                     setTimeout(() => {
-    //                         console.log('-almost ran away from the aromas of France')
-    //
-    //                         setTimeout(() => {
-    //                             console.log('-poured himself mineral water')
-    //
-    //                             setTimeout(() => {
-    //                                 console.log('-prayed to Allah I am  still alive')
-    //
-    //                                 setTimeout(() => {
-    //                                     console.log('-thanked Perun for not having to get to work')
-    //
-    //                                     setTimeout(() => {
-    //                                         console.log('-moved my lazy skinny ass from bed to a chair')
-    //
-    //                                         setTimeout(() => {
-    //                                             console.log('-hallelujah I\'m at work')
-    //
-    //                                         },2000)
-    //                                     },2000)
-    //                                 },2000)
-    //                             },2000)
-    //                         },2000)
-    //                     },2000)
-    //                 },2000)
-    //             },2000)
-    //         },2000)
-    //     },2000)
-    // },2000)
+    console.log('the beginning of my day')
+    setTimeout(() => {
+        let counter = 1
+        console.log(counter, '-got up')
+        setTimeout(() => {
+            counter++
+            console.log(counter,'-coughed')
+            setTimeout(() => {
+                counter++
+                console.log(counter,'-almost died')
+                setTimeout(() => {
+                    counter++
+                    console.log(counter,'-got tired of allergies')
+                    setTimeout(() => {
+                        counter++
+                        console.log(counter,'-went to the toilet')
+                        setTimeout(() => {
+                            counter++
+                            console.log(counter,'-almost ran away from the aromas of France')
+                            setTimeout(() => {
+                                counter++
+                                console.log(counter,'-poured himself mineral water')
+                                setTimeout(() => {
+                                    counter++
+                                    console.log(counter,'-prayed to Allah I am  still alive')
+                                    setTimeout(() => {
+                                        counter++
+                                        console.log(counter,'-thanked Perun for not having to get to work')
+                                        setTimeout(() => {
+                                            counter++
+                                            console.log(counter,'-moved my lazy skinny ass from bed to a chair')
+                                            setTimeout(() => {
+                                                counter++
+                                                console.log(counter,'-hallelujah I\'m at work')
+                                            },2000)
+                                        },2000)
+                                    },2000)
+                                },2000)
+                            },2000)
+                        },2000)
+                    },2000)
+                },2000)
+            },2000)
+        },2000)
+    },2000)
 
+    /////////////////////////////////////////////////////
 
-    // let promise = new Promise((resolve, reject) => {
-    //     let counter = 0
-    //     setTimeout(() => {
-    //         console.log(counter)
-    //         console.log('-the beginning of my day')
-    //         counter++
-    //         resolve(counter)
-    //     }, 2000)
-    // })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-got up')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-coughed')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-almost died')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-got tired of allergies')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-went to the toilet')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-almost ran away from the aromas of France')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-poured himself mineral water')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-prayed to Allah I am  still alive')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-thanked Perun for not having to get to work')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-moved my lazy skinny ass from bed to a chair')
-    //                 value++
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise((resolve, reject) => {
-    //             setTimeout(() => {
-    //                 console.log(value)
-    //                 console.log('-hallelujah I\'m at work')
-    //                 value++
-    //                 if (value>9) {
-    //                     reject('Too much value')
-    //                 }
-    //                 resolve(value)
-    //             }, 2000)
-    //         })
-    //     })
-    //     .then(value => {
-    //         return new Promise(((resolve, reject) => {
-    //             setTimeout(() => reject(`Done!`),1000)
-    //         }))
-    //     })
-    //     .catch(err => console.error('Errrrorushche: ', err))
-    //     .finally(() => console.log('finally'))
+    let promise = new Promise((resolve, reject) => {
+        let counter = 0
+        setTimeout(() => {
+            console.log(counter)
+            console.log('-the beginning of my day')
+            counter++
+            resolve(counter)
+        }, 2000)
+    })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-got up')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-coughed')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-almost died')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-got tired of allergies')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-went to the toilet')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-almost ran away from the aromas of France')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-poured himself mineral water')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-prayed to Allah I am  still alive')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-thanked Perun for not having to get to work')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-moved my lazy skinny ass from bed to a chair')
+                    value++
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(value)
+                    console.log('-hallelujah I\'m at work')
+                    value++
+                    if (value>9) {
+                        reject('Too much value')
+                    }
+                    resolve(value)
+                }, 2000)
+            })
+        })
+        .then(value => {
+            return new Promise(((resolve, reject) => {
+                setTimeout(() => reject(`Done!`),1000)
+            }))
+        })
+        .catch(err => console.error('Errrrorushche: ', err))
+        .finally(() => console.log('finally'))
 
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
 
     function myRoutine(counter, milis) {
         return new Promise(((resolve, reject) => {
@@ -289,6 +290,8 @@
         }
     }
     count2()
+
+
 </script>
 </body>
 </html>
