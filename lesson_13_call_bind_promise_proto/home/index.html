@@ -65,7 +65,6 @@
     //         resolve(counter)
     //     }, 2000)
     // })
-    // promise
     //     .then(value => {
     //         return new Promise((resolve, reject) => {
     //             setTimeout(() => {
@@ -189,72 +188,72 @@
 
 ///////////////////////////////////////////////////////////////
 
-    // function myRoutine(counter, milis) {
-    //     return new Promise(((resolve, reject) => {
-    //         setTimeout(() => {
-    //             console.log(counter)
-    //             counter++
-    //             if (counter>13) {
-    //                 reject('Too much counter - ')
-    //             }
-    //             resolve(counter)
-    //         }, milis)
-    //     }))
-    // }
-    // myRoutine(0, 1000)
-    //     .then(value => {
-    //         console.log('-the beginning of my day')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-got up')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-coughed')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-almost died')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-got tired of allergies')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-went to the toilet')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //     console.log('-almost died')
-    //     return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-almost ran away from the aromas of France')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-poured himself mineral water')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-prayed to Allah I am  still alive')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-thanked Perun for not having to get to work')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-moved my lazy skinny ass from bed to a chair')
-    //     return myRoutine(value, 1000)
-    //     })
-    //     .then(value => {
-    //         console.log('-hallelujah I\'m at work')
-    //         return myRoutine(value, 1000)
-    //     })
-    //     .catch(reason => console.error(reason))
+    function myRoutine(counter, milis) {
+        return new Promise(((resolve, reject) => {
+            setTimeout(() => {
+                console.log(counter)
+                counter++
+                if (counter>13) {
+                    reject('Too much counter - ')
+                }
+                resolve(counter)
+            }, milis)
+        }))
+    }
+    myRoutine(0, 1000)
+        .then(value => {
+            console.log('-the beginning of my day')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-got up')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-coughed')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-almost died')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-got tired of allergies')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-went to the toilet')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+        console.log('-almost died')
+        return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-almost ran away from the aromas of France')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-poured himself mineral water')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-prayed to Allah I am  still alive')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-thanked Perun for not having to get to work')
+            return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-moved my lazy skinny ass from bed to a chair')
+        return myRoutine(value, 1000)
+        })
+        .then(value => {
+            console.log('-hallelujah I\'m at work')
+            return myRoutine(value, 1000)
+        })
+        .catch(reason => console.error(reason))
 
     /////////////////////////////////////////////////
 
@@ -263,7 +262,6 @@
             setTimeout(() => {
                 console.log(counter)
                 counter++
-
                 if (counter > 4) {
                     console.log('This is counter - ' + counter)
                     reject('Too much counter - ')
