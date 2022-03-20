@@ -8,60 +8,6 @@
 
 
 <script>
-    ///////////////////////////////////
-    //
-    //         Konstruktor
-    //
-    ///////////////////////////////////
-    class Person {
-        type = 'Human'
-
-        constructor(name) {
-            this.name = name;
-        }
-        greet() {
-            console.log(this.name + ' HI !')
-        }
-    }
-
-    class ProgSlave  extends   Person {
-        constructor(name, job) {
-            super(name);
-            this._job = job;
-        }
-    }
-
-    const frontend = new ProgSlave('Livot', 'Frontend')
-    console.log(frontend)
-    frontend.greet()
-
-
-    class Util {
-        static average(...args) {
-            return args.reduce((acc, i) => acc += i , 0)/args.length
-        }
-    }
-    console.log(Util.average(1, 2, 3, 4, 5))
-
-    ///////////////////////////////////
-    //
-    //         Symbol
-    //
-    ///////////////////////////////////
-    const symbol = Symbol('demo')
-
-     const obj = {
-         name: 'Eva',
-         demo: 'DEMO',
-         [symbol]: 'meta'
-     }
-
-    for (const objKey in obj) {
-        console.log(objKey)        // name , demo
-    }
-
-    console.log(obj.demo)
-    console.log(obj[symbol])
 
     ///////////////////////////////////
     //
@@ -83,7 +29,7 @@
                     const value = this.value[i]
                     i+=3
                     return{
-                        done: i > this.value.length*2,
+                        done: i > this.value.length + 2,
                         value
                     }
                 }
@@ -93,7 +39,9 @@
     for (const countryElement of country) {
         console.log(countryElement)
     }
+    console.log(country)
 
+    ///////////////////////////////////////////////////
     // generator
     function *gen(num = 4) {
         for (let i = 0; i < num; i++) {
@@ -110,6 +58,42 @@
     console.log(iter.throw('my error'))
     console.log(iter.next())
     console.log(iter.next())
+
+    console.log('-------------')
+
+    ////////////////////////////////////////////////
+
+    const iterator = {
+        gener(n = 4) {
+            let i = -1
+            return {
+                next() {
+                    if (i < n) {
+                        return {value: ++i, done: false}
+                    }
+                    return {value: undefined, done: true}
+                }
+            }
+        }
+    }
+    let itr = iterator.gener()
+    console.log(itr.next())  // {value: 1, done: false}
+    console.log(itr.next())  // {value: 2, done: false}
+    console.log(itr.next())  // {value: 3, done: false}
+    console.log(itr.next())  // {value: 4, done: false}
+    console.log(itr.next())  // {value: undefined, done: false}
+
+    ////////////////////////////////////////////
+
+    function* iter2(n = 10) {
+        for (let i = 0; i < n; i++) {
+            yield i
+        }
+    }
+
+    for (const item of iter2(5)) {
+        console.log(item)
+    }
 </script>
 </body>
 </html>
