@@ -62,17 +62,17 @@ console.log(user);
 // //////////////////////////////////////////////
 //
 //
-// let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-// console.log(numbers2)
-// console.log(Array.isArray(numbers2))
-// let unshift = numbers2.unshift(6)
-// console.log(unshift)
-//
-// let pop = numbers2.pop()
-// console.log(pop)
-//
-// let shift = numbers2.shift()
-// console.log(shift)
+let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(numbers2)
+console.log(Array.isArray(numbers2))
+let unshift = numbers2.unshift(6)
+console.log(unshift)
+
+let pop = numbers2.pop()
+console.log(pop)
+
+let shift = numbers2.shift()
+console.log(shift)
 //
 // console.log(numbers2)
 // let slice2 = numbers2.slice(1, 4)
