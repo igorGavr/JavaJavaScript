@@ -120,3 +120,21 @@ const k = Math.sqrt(n*n+m*m)
 
 console.log('Завдання 7')
 console.log(k+' cm')
+
+////////////////////////////////////////////////////
+console.log('---JavaScript:\n' +
+    'The Definitive\n' +
+    'Guide\n' +
+    'Master the World\'s Most-Used\n' +
+    'Programming Language----')
+
+// Логические операции объединяют или инвертируют булевские значения:
+let j = 2, f = 3
+let and = (j===2) && (f===3); // обидва вирази мають давати true
+console.log(and) // => true
+
+let pipe = (j===2) || (f===2); // якщо хоча б один вираз дає false то буде false
+console.log(pipe)
+
+let exclamation = !(j<f); // ! инвертирует булевское значение
+console.log(exclamation)

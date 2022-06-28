@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="post"></div>
+
+
+<script>
+    let  url = new URL(location.href)
+    let post = JSON.parse(url.searchParams.get('data'))
+
+    let postContainer = document.getElementsByClassName('post')[0]
+    postContainer.innerText = JSON.stringify(post)
+</script>
+</body>
+</html>

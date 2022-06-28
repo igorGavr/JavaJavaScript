@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    ////////////////////////////////////////////////
+    //
+    //   MAP
+    //
+    ///////////////
+    const obj = {
+        name: 'nsa',
+        age: 23,
+        job: 'army'
+    }
+    const entries = [
+        ['name', 'nsa'],
+        ['age', 23],
+        ['job', 'army']
+    ]
+    console.log(Object.entries(obj))
+    console.log(Object.fromEntries(entries))
+    let map = new Map(entries)
+    console.log(map.get('job'))
+
+    map
+        .set('new', 223)
+        .set(obj, 'value of object')
+        .set(NaN, 'NaN ??')
+
+    console.log(map.get(NaN))
+    map.delete('job')
+    console.log(map.has('job'))
+    console.log(map.size)
+    // map.clear()
+    console.log('--------------')
+
+    for (const [key, value] of map) {
+        console.log(key, value)
+    }
+
+    // for (const value of map.values()) {
+    //     console.log(value)
+    // }
+    //
+    // for (const key of map.keys()) {
+    //     console.log(key)
+    // }
+    // map.forEach((value, key, map) => {
+    //     console.log(value, key)
+    // })
+
+    // Робимо масив з карти
+    let array = Array.from(map)
+    let array2 = [...map]
+    console.log(array)
+    console.log(array2)
+
+    let mapObj = Object.fromEntries(map.entries())
+    console.log(mapObj)
+
+    /////////////////////////////////////////////////////////
+
+    let users = [
+        {name: 'lens'},
+        {name: 'ds'},
+        {name: 'jis'}
+    ]
+    let visits = new Map()
+
+    visits
+        .set(users[0], new Date())
+        .set(users[1], new Date(new Date().getTime() + 1000))
+        .set(users[2], new Date(new Date()))
+    function lastVisit(user) {
+        return console.log(visits.get(user))
+    }
+
+    lastVisit(users[1])
+    lastVisit(users[2])
+
+    ////////////////////////////////////////////////
+    //
+    //   SET
+    //
+    ///////////////
+    let set = new Set([1, 2, 3, 3, 2])
+    console.log(set)
+
+    set.add(20).add(20)
+    console.log(set.has(30))
+    console.log(set.size)
+    console.log(set.delete(1))
+    // console.log(set.clear())
+
+    console.log(set.values())
+    console.log(set.keys())
+    console.log(set.entries())
+
+    for (const key of set) {
+        console.log(key)
+    }
+
+    function uniqValues(array) {
+        return [...new Set(array)]  // Array.from(new Set(array))
+    }
+
+    console.log(uniqValues([1, 1, 2, 2, 3, 4, 4, 4]))
+    ////////////////////////////////////////////////
+    //
+    //   WEAK MAP
+    //
+    ///////////////
+    let object = {name: 'weakmap'}
+
+    // let arr = [obj]
+    // object = null
+    // console.log(object, arr)
+
+    let weakmap = new WeakMap([
+        [object, 'object data']
+    ])
+    // Має тільки методи get , set, delete, has
+    let cache = new WeakMap()
+
+    function cacheUser(user) {
+        if (!cache.has(user)) {
+            cache.set(user, Date.now())
+        }
+        return cache.get(user)
+    }
+
+    let lena = {name: 'Elena'}
+    let alex = {name: 'Alex'}
+
+    cacheUser(lena)
+    cacheUser(alex)
+
+    lena = null
+    console.log(cache.has(lena))
+    console.log(cache.has(alex))
+    ////////////////////////////////////////////////
+    //
+    //   WEAK SET
+    //
+    ///////////////
+
+    let users2 = [
+        {name: 'lens'},
+        {name: 'ds'},
+        {name: 'jis'}
+    ]
+    let vis = new WeakSet()
+
+    users2.splice(1, 1)
+    console.log(users2)
+    vis.add(users2[0]).add(users2[1])
+    console.log(vis.has(users2[0]))
+    console.log(vis.has(users2[2]))
+
+
+
+
+
+
+</script>
+</body>
+</html>
