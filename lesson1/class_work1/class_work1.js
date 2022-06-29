@@ -138,3 +138,41 @@ console.log(pipe)
 
 let exclamation = !(j<f); // ! инвертирует булевское значение
 console.log(exclamation)
+
+//Мы также можем определять наш собственный метод.
+let points = [
+    {x: 0, y: 0},
+    {x: 1, y: 1}
+]
+points.distance = function () {
+    let el1 = this [0];
+    let el2 = this [1];
+    let t1 = el2.x-el1.x;
+    let t2 = el2.y-el1.y;
+    return Math.sqrt(t1*t1 + t2*t2)
+}
+console.log(points.distance());
+
+function factorial(n) {
+    let firstEl = 1
+    while (n>1) {
+        firstEl *= n;
+        n--
+    }
+    return firstEl
+}
+
+console.log(factorial(12))
+
+
+class Point {
+    constructor(x, y) {
+        this._x = x;
+        this._y = y;
+    }
+    distance() {
+        return Math.sqrt(this._x*this._x + this._y*this._y)
+    }
+}
+let point1 = new Point(1, 2)
+console.log(point1.distance())
