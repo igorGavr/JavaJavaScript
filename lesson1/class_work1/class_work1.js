@@ -196,3 +196,31 @@ console.log("\u{1F600}")
 
 points. sort (); // Объектно-ориентированная версия sort(points)
 //Обектные типы JavaScript являются изменяемыми, элементарные типы — неизменяемым
+
+// Дата і час
+let timeStamp = Date.now();    // Текущее время как отметка времени (число)
+let now = new Date();          // Текущее время как объект Date
+let ms = now.getTime();       // Преобразовать в миллисекундную отметку времени.
+let iso = now.toISOString();  // Преобразовать в строку со стандартным форматом.
+
+console.log(timeStamp);
+console.log(now);
+console.log(ms);
+console.log(iso);
+
+for (let i = 0; i < 112120; i++) {
+
+}
+let time2 = Date.now();
+console.log(time2);
+console.log(time2-timeStamp);
+
+console.log('\ud83d\uda21')
+console.log('sdgsdg\nsdfsdf')
+console.log("one\
+            long\
+            line");
+console.log(`sdagsag
+sdgfa\tsdg`)
+
+console.log(' oi'==='oi ')  // => false
