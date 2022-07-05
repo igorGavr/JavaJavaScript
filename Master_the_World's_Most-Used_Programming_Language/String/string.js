@@ -203,3 +203,29 @@ function equalArrays(a, b) {
     return 2;
 }
 console.log(equalArrays(aa, cc));  // => 2
+
+// Преобразования типов
+
+console.log('4'*'4')   // => 16
+console.log(1 - 'd'+' obj')   // => NaN obj
+console.log(true+1)          // => 2
+// console.log(null===undefined) // => false
+// console.log(undefined==false) // => false
+Number('3')     // => 3
+String(false)   // => 'false'
+Boolean([])     // => true
+console.log((12).toString(2))  // => 1100
+
+let num = 123456.789;
+console.log(num.toFixed(0))  // => '123457'
+console.log(num.toFixed(2))  // => '123456.79'
+console.log(num.toFixed(5))  // => '123456.78900'
+console.log(num.toExponential(1))   // => '1.2e+5'
+console.log(num.toExponential(4))   // => '1.2346e+5'
+console.log(num.toPrecision(3))        // => '1.23e+5'
+console.log(num.toPrecision(7))        // => '123456.8'
+console.log(num.toPrecision(11))       // => '123456.78900'
+console.log(parseInt(' 23.9', 9))             // => 19
+console.log(parseInt('zz', 36))             // => 1295
+
+console.log(Number([]))   // => 0
