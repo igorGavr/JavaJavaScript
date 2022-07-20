@@ -106,3 +106,52 @@ if (a===b) stop();  // визвати stop() тільки якщо а===b
 
 console.log((1,5 - 1)* 2)  // => 8  OMG
 
+// ТЕРНАРКА
+greeting = 'hello'+ (name ? name : '  there');
+console.log(greeting)
+
+// Операция выбора первого
+// определенного операнда (??)
+let rar = null;    // if rar === null or undefined => dar=0;
+let dar = 0;
+console.log(rar??dar)
+
+console.log((rar !== null && rar !== undefined) ? rar : dar)    // the same rar ?? dar
+
+let far = undefined;
+let sar;
+let res = dar ?? rar ?? 19;  // => dar = 0;
+let res2 = rar ?? dar ?? 19; // => dar = 0;
+let res3 = far ?? rar ?? 1;  // => 1;
+let res4 = far ?? sar ?? rar ?? 1;  // => 1;
+console.log(res)
+console.log(res2)
+console.log(res3)
+console.log(res4)
+
+let options = {time: 0, title: '', base: false, lik: null};
+console.log(options.time ?? 12)          // => 0
+console.log(options.title ?? 'untitled') // => empty string
+console.log(options.base ?? true)        // => false     !!!!!!
+console.log(options.fuh ?? false)        // => false
+console.log(options.lik ?? 10)           // => 10
+//  вирази time, title, base, lik мали б зовсім інші значення
+// якщо ми використовували би || замість ??
+
+console.log(typeof null)
+
+console.log(delete options.lik)   // true
+console.log(typeof options.lik)   // undefined
+console.log(delete options.lik)   // true
+console.log(delete null)          // true
+
+// Операция void
+let counter = 0;
+const inc = () => void counter++;
+console.log(inc());    // undefined
+console.log(counter)   // 1
+
+// Операция КОМА
+for (let i=0, v=10; i<v; i++, v--) {
+    console.log(i, v)
+}
