@@ -14,7 +14,7 @@ console.log(newList.reduce(result))
 
 // 2 спосіб
 let numList = Array.from({length: 10}, () => Math.floor(Math.random()*100));
-const total = numList.reduce(function (a,b){
+let total = numList.reduce(function (a, b){
     return a+b;
 });
 
