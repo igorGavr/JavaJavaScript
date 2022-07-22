@@ -128,3 +128,17 @@ function* range(from, to) {
 }
 
 console.log(range(1, 3))
+
+// throw
+function factorial(x) {
+    if (x<0) throw new Error('Enter valid x');
+    let f;
+    for (f=1; x>1; f*=x, x--);
+    return f;
+}
+console.log(factorial(22));
+
+// with
+with (document.forms[0]) {
+    name.value = '';
+}
