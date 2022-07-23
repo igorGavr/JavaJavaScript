@@ -85,3 +85,22 @@ console.log(Reflect.ownKeys(object1));
 // expected output: Array ["property1", "property2"]
 console.log(Reflect.ownKeys(array1));
 // expected output: Array ["length"]
+
+// Розширення обєктів
+function merge(target, ...sources) {
+    for (const source of sources) {
+        console.log(source);
+        for (const key of Object.keys(source)) {
+            console.log(key);
+            if (!(key in target)) {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+// функція розширює обєкт тими полями які не представлені в першому обєкті
+// поля першого обєкту перетирають решту полів
+console.log(merge({x:1}, {x:2, y:2}, {y:3, z:4}))       // {x: 1, y: 2, z: 4}
+console.log(Object.assign({x:1}, {x:2, y:2}, {x: 3, y:3, z:4}))   // {x: 3, y: 3, z: 4}
+// поля першого обєкту перетираються полями інших обєктів

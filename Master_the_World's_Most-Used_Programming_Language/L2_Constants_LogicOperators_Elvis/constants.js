@@ -112,9 +112,9 @@ console.log(greeting)
 
 // Операция выбора первого
 // определенного операнда (??)
-let rar = null;    // if rar === null or undefined => dar=0;
+let rar = null;
 let dar = 0;
-console.log(rar??dar)
+console.log(rar??dar)  // if rar === null or undefined => dar=0;
 
 console.log((rar !== null && rar !== undefined) ? rar : dar)    // the same rar ?? dar
 

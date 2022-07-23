@@ -12,6 +12,9 @@ console.log(and) // => true
 
 let pipe = (j===2) || (f===2); // якщо хоча б один вираз дає false то буде false
 console.log(pipe)
+console.log(0 || true)  // true
+console.log(true || false && false)      // вернёт true, поскольку сначала вычисляется &&
+console.log((true || false) && false)    // вернёт false, поскольку у группировки выше приоритет
 
 let exclamation = !(j<f); // ! инвертирует булевское значение
 console.log(exclamation)
@@ -229,3 +232,13 @@ console.log(parseInt(' 23.9', 9))             // => 19
 console.log(parseInt('zz', 36))             // => 1295
 
 console.log(Number([]))   // => 0
+
+console.log(String([1, 2]+[2,3, 4]))  // '1,22,3,4'
+console.log('5'+3)  // '53'
+console.log(3+'5')  // '35'
+console.log('5'-3)  // 2
+console.log(typeof +'2') // number
+console.log('5'-'2')  // 3
+console.log(-'2')     // '-2'
+console.log(typeof ([ ]-2))
+console.log(Number([]))
