@@ -80,3 +80,57 @@ let weirdMethods = {
 console.log(weirdMethods['method with spaces'](10))  // 11
 console.log(weirdMethods[METHOD_NAME](10))           // 12
 console.log(weirdMethods[symbol](10))                   // 13
+
+// Методи отримання та установки властивостів
+let pip = {
+    x: 1,
+    y: 1,
+    // r - властивість з методами доступу, які допускають читання та запис,
+    // з методами отримання та установки.
+    get r() {return this.x+this.y;},
+    set r(newValue) {
+        this.x *= newValue;
+        this.y *= newValue;
+    },
+    // theta - властивість з методами доступу, які допускають лише читання
+    // і мають лише метод отримання.
+    get theta() {
+        return Math.atan2(this.y, this.x);
+    }
+}
+console.log(pip.r)   // => 2;
+pip.r = 3;   // сетаємо newValue
+console.log(pip.r)   // => 6;
+
+let qw = Object.create(pip)  // новий обєкт який наслідує методи отримання і установки
+console.log(qw.r)   // => 6;
+
+// JavaScript Object.defineProperty()
+const student = {
+    firstName: 'Monica'
+}
+// getting property
+Object.defineProperty(student, "getName", {
+    get : function () {
+        return this.firstName;
+    }
+});
+// setting property
+Object.defineProperty(student, "changeName", {
+    set : function (value) {
+        this.firstName = value;
+    }
+});
+console.log(student.firstName); // Monica
+// changing the property value
+student.changeName = 'Sarah';
+console.log(student.firstName); // Sarah
+
+const random = {
+    get octet() {return Math.floor(Math.random()*256);},
+    get uint16() {return Math.floor(Math.random()*6);},
+    get int16() {return Math.floor(Math.random()*12)-6;}
+}
+console.log(random.octet)
+console.log(random.uint16)
+console.log(random.int16)
