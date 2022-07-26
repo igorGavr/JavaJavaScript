@@ -233,11 +233,10 @@ let reduceAll = users.reduce((basket, user) => {
 console.log(reduceAll)
 
 let newUsers = users.map((user) => {
-    let newUsers1 = {
+    return {
         name: user.name,
         age: user.age
     }
-    return newUsers1
 })
 console.log(newUsers)
 
