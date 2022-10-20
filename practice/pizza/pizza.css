@@ -21,7 +21,7 @@ a{
     text-decoration:none
 }
 .header{
-    border-bottom:1px solid #f6f6f6;
+    border-bottom:11px solid #f6f6f6;
     padding:40px 0
 }
 .header .container{
@@ -182,7 +182,11 @@ a{
 .categories ul{
     display:-webkit-box;
     display:-ms-flexbox;
-    display:flex}
+    display:flex
+}
+.categories ul li::marker{
+     content: none;
+ }
 .categories ul li{
     background-color:#f9f9f9;
     padding:13px 30px;
@@ -198,6 +202,7 @@ a{
     -ms-user-select:none;
     user-select:none
 }
+
 .categories ul li:hover{
     background-color:#f4f4f4
 }
@@ -260,7 +265,7 @@ a{
     margin-bottom:65px
 }
 .pizza-block:not(:nth-of-type(4n)){
-    margin-right:35px
+    margin-right:45px
 }
 .pizza-block__image{
     width:260px
@@ -288,7 +293,8 @@ a{
     display:-ms-flexbox;
     display:flex;
     -webkit-box-flex:1;
-    -ms-flex:1;flex:1
+    -ms-flex:1;flex:1;
+    padding-left: 0px;
 }
 .pizza-block__selector ul:first-of-type{
     margin-bottom:6px
@@ -300,12 +306,15 @@ a{
     flex:1;
     cursor:pointer;
     font-weight:600;
-    font-size:14px;
+    font-size:18px;
     -webkit-touch-callout:none;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none
+}
+.pizza-block__selector ul li::marker{
+    content: none;
 }
 .pizza-block__selector ul li.active{
     background:#ffffff;
@@ -455,12 +464,12 @@ a{
     -webkit-box-align:center;
     -ms-flex-align:center;
     align-items:center;
-    margin-right:15px;
-    width:10%
+    margin-right:11px;
+    width:16%
 }
 .cart__item-img img{
-    width:80px;
-    height:80px
+    width:120px;
+    height:120px
 }
 .cart__item-info{
     display:-webkit-box;
